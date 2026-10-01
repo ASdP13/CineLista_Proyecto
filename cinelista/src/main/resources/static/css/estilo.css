@@ -7,6 +7,8 @@
     --color-background: #0B0D12;
     --color-background-alt: #10131A;
 
+    --color-primary: #B82525;
+
     --color-container-1: #1B1E27;
     --color-container-2: #232735;
     --color-container-3: #2A3042;
@@ -15,7 +17,14 @@
     --color-text-2: #C2C7D0;
     --color-text-disabled: #5F6775;
 
-    --color-primary: #B82525;
+    --color-border-1: #2C3340;
+    --color-border-2: #353C4A;
+
+    --color-state_success: #22C55E;
+    --color-state-alert: #EAB308;
+    --color-state-error: #EF4444;
+    --color-state-info: #3B82F6;
+
     --font-primary: Roboto, Arial, sans-serif;
 }
 
@@ -38,4 +47,5 @@
 
 .text-primary-cinelista{
     color: var(--color-primary) !important;
+
 }
