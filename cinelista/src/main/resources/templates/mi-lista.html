@@ -6,7 +6,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <link rel="stylesheet" href="../static/css/estilo.css">
     </head>
-    <body class="container-fluid m-0 p-0 bg-fondo">
+    <body class="container-fluid m-0 p-0 bg-background-cinelista">
 
         <header th:replace="~{fragments/nav :: header}"></header>
 
@@ -27,22 +27,32 @@
   metodo eliminar) esta a medias: teneis que completarlo vosotros.
 -->
         <main class="container-fluid p-5">
-            <h1 class="text-center fw-bolder text-white">MI LISTA</h1>
+            <h1 class="text-center fw-bolder text-white mb-5">MI LISTA</h1>
 
-            <table>
-                <thead>
-                <tr>
-                    <th>Titulo</th>
-                </tr>
+            <table class="text-white bg-container container-fluid">
+                <thead class="text-center">
+                    <tr>
+                        <th>Título</th>
+                        <th>Género</th>
+                        <th>Plataforma</th>
+                        <th>Estado</th>
+                        <th>Valoración</th>
+                        <th>Acciones</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr th:each="p : ${peliculas}">
-                    <td th:text="${p.titulo}">Titulo</td>
-                </tr>
+                    <tr th:each="p : ${peliculas}">
+                        <td th:text="${p.titulo}">Título</td>
+                        <td th:text="${p.genero}">Género</td>
+                        <td th:text="${p.plataforma}">Plataforma</td>
+                        <td th:text="${p.estado}">Estado</td>
+                        <td th:text="${p.valoracion}">Valoraciones</td>
+                        <td th:text="${p.acciones}">Acciones</td>
+                    </tr>
                 </tbody>
             </table>
 
-            <p th:if="${#lists.isEmpty(peliculas)}">Todavia no hay peliculas registradas.</p>
+            <p class="text-white" th:if="${#lists.isEmpty(peliculas)}">Todavía no hay películas registradas.</p>
         </main>
     </body>
 </html>
