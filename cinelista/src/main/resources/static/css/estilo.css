@@ -4,14 +4,23 @@
   CineLista. Definid tambien cualquier otro estilo.
 */
 :root {
-    --color-fondo: #0B0D12;
-    --color-fondo2: #1B1E27;
-    --color-primario: #B82525;
-    --fuente-principal: Roboto, Arial, sans-serif;
+    --color-background: #0B0D12;
+    --color-background-alt: #10131A;
+
+    --color-container-1: #1B1E27;
+    --color-container-2: #232735;
+    --color-container-3: #2A3042;
+
+    --color-text-1: #FFFFFF;
+    --color-text-2: #C2C7D0;
+    --color-text-disabled: #5F6775;
+
+    --color-primary: #B82525;
+    --font-primary: Roboto, Arial, sans-serif;
 }
 
 .nav-link.active{
-    color: var(--color-primario) !important;
+    color: var(--color-primary) !important;
     text-decoration-line: underline !important;
 }
 
@@ -19,14 +28,14 @@
     color: white !important;
 }
 
-.bg-fondo{
-    background-color: var(--color-fondo) !important;
+.bg-background-cinelista{
+    background-color: var(--color-background) !important;
 }
 
-.bg-fondo2{
-    background-color: var(--color-fondo2) !important;
+.bg-container{
+    background-color: var(--color-container-1) !important;
 }
 
-.text-primario{
-    color: var(--color-primario) !important;
+.text-primary-cinelista{
+    color: var(--color-primary) !important;
 }
