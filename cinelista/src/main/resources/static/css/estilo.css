@@ -1,0 +1,32 @@
+/*
+  TODO:
+  Definid aqui vuestra paleta de 2 colores y la tipografia elegida para
+  CineLista. Definid tambien cualquier otro estilo.
+*/
+:root {
+    --color-fondo: #0B0D12;
+    --color-fondo2: #1B1E27;
+    --color-primario: #B82525;
+    --fuente-principal: Roboto, Arial, sans-serif;
+}
+
+.nav-link.active{
+    color: var(--color-primario) !important;
+    text-decoration-line: underline !important;
+}
+
+.nav-link{
+    color: white !important;
+}
+
+.bg-fondo{
+    background-color: var(--color-fondo) !important;
+}
+
+.bg-fondo2{
+    background-color: var(--color-fondo2) !important;
+}
+
+.text-primario{
+    color: var(--color-primario) !important;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html langs="es" xmlns:th="http://www.thymeleaf.org">
+
+<!--
+  Navegacion MINIMA y sin estilar, solo para poder pasar de una pantalla a
+  otra mientras desarrollais. No es la barra de navegacion final: teneis
+  que disenarla y construirla vosotros con el editor visual + Bootstrap,
+  siguiendo el wireframe, y sustituir esta version en mi-lista.html.
+-->
+
+    <header class="bg-black container-fluid row m-0">
+        <h1 class="col col-lg-2 text-white m-auto"><span class="fw-bolder">Cine</span><span class="fw-bolder text-primario">Lista</span></h1>
+        <nav class="col col-lg-10 navbar navbar-expand-lg navbar-dark bg-black">
+            <div class="container-fluid justify-content-end">
+
+                <!-- Botón para celulares (menú hamburguesa) -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Enlaces del menú -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav container-fluid d-flex justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Mi lista</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Añadir título</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Estrenos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Estadísticas</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+</html>
