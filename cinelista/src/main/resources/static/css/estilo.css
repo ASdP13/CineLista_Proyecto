@@ -47,5 +47,25 @@
 
 .text-primary-cinelista{
     color: var(--color-primary) !important;
+    font: var(--font-primary);
+}
 
+.text-disabled-color{
+    color: var(--color-text-disabled) !important;
+    font: var(--font-primary);
+}
+
+.text-common{
+    color: var(--color-text-1) !important;
+    font-size: 1em !important;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.5em;
+}
+
+.text-hero{
+    color: var(--color-text-1) !important;
+    font-size: 3em !important;
+    font-weight: bolder;
+    font-style: normal;
 }
