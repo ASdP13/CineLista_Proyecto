@@ -33,9 +33,9 @@
                 <thead class="text-center">
                     <tr>
                         <th>Título</th>
-                        <th>Género</th>
-                        <th>Plataforma</th>
-                        <th>Estado</th>
+                        <th class="d-none d-md-table-cell">Género</th>
+                        <th class="d-none d-md-table-cell">Plataforma</th>
+                        <th class="d-none d-md-table-cell">Estado</th>
                         <th>Valoración</th>
                         <th>Acciones</th>
                     </tr>
@@ -43,9 +43,9 @@
                 <tbody>
                     <tr th:each="p : ${peliculas}">
                         <td th:text="${p.titulo}">Título</td>
-                        <td th:text="${p.genero}">Género</td>
-                        <td th:text="${p.plataforma}">Plataforma</td>
-                        <td th:text="${p.estado}">Estado</td>
+                        <td class="d-none d-md-table-cell" th:text="${p.genero}">Género</td>
+                        <td class="d-none d-md-table-cell" th:text="${p.plataforma}">Plataforma</td>
+                        <td class="d-none d-md-table-cell" th:text="${p.estado}">Estado</td>
                         <td th:text="${p.valoracion}">Valoraciones</td>
                         <td th:text="${p.acciones}">Acciones</td>
                     </tr>
