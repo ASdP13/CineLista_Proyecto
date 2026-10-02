@@ -7,7 +7,6 @@
         <link rel="stylesheet" href="../static/css/estilo.css">
     </head>
     <body class="container-fluid m-0 p-0 bg-background-cinelista">
-
         <header th:replace="~{fragments/nav :: header}"></header>
 
 <!--
@@ -21,15 +20,16 @@
   El envio ya esta conectado: hace POST a /anadir-titulo y el controlador
   (PeliculaController) guarda la pelicula en el repositorio.
 -->
+
         <main class="container-fluid p-5">
             <h1 class="text-center fw-bolder text-white mb-5">AÑADIR TÍTULO</h1>
 
             <form class="bg-container text-center text-white p-5" th:action="@{/anadir-titulo}" th:object="${pelicula}" method="post">
-                <label class="text-start">Título*<br><input type="text" th:field="*{titulo}" required></label><br>
-                <label class="text-start">Género*<br><input type="text" th:field="*{titulo}" required></label><br>
-                <label class="text-start">Plataforma*<br><input type="text" th:field="*{titulo}" required></label><br>
-                <label class="text-start">Estado*<br><input type="text" th:field="*{titulo}" required></label><br>
-                <label class="text-start">Visualización<br><input type="text" th:field="*{titulo}" required></label><br>
+                <label class="text-start fs-4 mb-2">Título*<br><input type="text" class="fs-5" th:field="*{titulo}" required></label><br>
+                <label class="text-start fs-4 mb-2">Género*<br><input type="text" class="fs-5" th:field="*{titulo}" required></label><br>
+                <label class="text-start fs-4 mb-2">Plataforma*<br><input type="text" class="fs-5" th:field="*{titulo}" required></label><br>
+                <label class="text-start fs-4 mb-2">Estado*<br><input type="text" class="fs-5" th:field="*{titulo}" required></label><br>
+                <label class="text-start fs-4 mb-2">Visualización<br><input type="text" class="fs-5" th:field="*{titulo}" required></label><br>
                 <button type="submit">Guardar</button>
             </form>
         </main>

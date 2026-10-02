@@ -28,6 +28,10 @@
     --font-primary: Roboto, Arial, sans-serif;
 }
 
+*{
+    font-family: var(--font-primary);
+}
+
 .nav-link.active{
     color: var(--color-primary) !important;
     text-decoration-line: underline !important;
