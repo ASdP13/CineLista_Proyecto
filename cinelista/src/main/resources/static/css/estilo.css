@@ -51,25 +51,60 @@
 
 .text-primary-cinelista{
     color: var(--color-primary) !important;
-    font: var(--font-primary);
 }
 
 .text-disabled-color{
     color: var(--color-text-disabled) !important;
-    font: var(--font-primary);
-}
-
-.text-common{
-    color: var(--color-text-1) !important;
-    font-size: 1em !important;
-    font-weight: normal;
-    font-style: normal;
-    line-height: 1.5em;
 }
 
 .text-hero{
     color: var(--color-text-1) !important;
     font-size: 3em !important;
-    font-weight: bolder;
-    font-style: normal;
+    font-weight: bolder !important;
+    font-style: normal !important;
+}
+
+.text-title-page{
+    color: var(--color-text-1) !important;
+    font-size: 2.5em !important;
+    font-weight: bold !important;
+    font-style: normal !important;
+}
+
+.text-title{
+    color: var(--color-text-1) !important;
+    font-size: 2em !important;
+    font-weight: bold !important;
+    font-style: normal !important;
+}
+
+.text-subtitle{
+    color: var(--color-text-1) !important;
+    font-size: 1.5em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+}
+
+.text-common{
+    color: var(--color-text-1) !important;
+    font-size: 1em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    line-height: 1.5em !important;
+}
+
+.text-common-secondary{
+    color: var(--color-text-1) !important;
+    font-size: 0.875em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    line-height: 1.375em !important;
+}
+
+.text-common-details{
+    color: var(--color-text-1) !important;
+    font-size: 0.75em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    line-height: 1.25em !important;
 }
