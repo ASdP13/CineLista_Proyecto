@@ -122,3 +122,8 @@
 .text-bold{
     font-family: "Arial Black" !important;
 }
+
+.radio-custom{
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
