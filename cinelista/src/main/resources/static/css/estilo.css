@@ -28,17 +28,15 @@
     --font-primary: Roboto, Arial, sans-serif;
 }
 
-*{
-    font-family: var(--font-primary);
-}
-
 .nav-link.active{
     color: var(--color-primary) !important;
     text-decoration-line: underline !important;
+    font-family: var(--font-primary);
 }
 
 .nav-link{
     color: white !important;
+    font-family: var(--font-primary);
 }
 
 .bg-background-cinelista{
@@ -49,12 +47,18 @@
     background-color: var(--color-container-1) !important;
 }
 
+.bg-primary-color{
+    background-color: var(--color-primary) !important;
+}
+
 .text-primary-cinelista{
     color: var(--color-primary) !important;
+    font-family: var(--font-primary);
 }
 
 .text-disabled-color{
     color: var(--color-text-disabled) !important;
+    font-family: var(--font-primary);
 }
 
 .text-hero{
@@ -62,6 +66,7 @@
     font-size: 3em !important;
     font-weight: bolder !important;
     font-style: normal !important;
+    font-family: var(--font-primary);
 }
 
 .text-title-page{
@@ -76,6 +81,7 @@
     font-size: 2em !important;
     font-weight: bold !important;
     font-style: normal !important;
+    font-family: var(--font-primary);
 }
 
 .text-subtitle{
@@ -83,6 +89,7 @@
     font-size: 1.5em !important;
     font-weight: normal !important;
     font-style: normal !important;
+    font-family: var(--font-primary);
 }
 
 .text-common{
@@ -91,6 +98,7 @@
     font-weight: normal !important;
     font-style: normal !important;
     line-height: 1.5em !important;
+    font-family: var(--font-primary);
 }
 
 .text-common-secondary{
@@ -99,6 +107,7 @@
     font-weight: normal !important;
     font-style: normal !important;
     line-height: 1.375em !important;
+    font-family: var(--font-primary);
 }
 
 .text-common-details{
@@ -107,4 +116,9 @@
     font-weight: normal !important;
     font-style: normal !important;
     line-height: 1.25em !important;
+    font-family: var(--font-primary);
+}
+
+.text-bold{
+    font-family: "Arial Black" !important;
 }

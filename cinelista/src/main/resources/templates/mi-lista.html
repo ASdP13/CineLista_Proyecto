@@ -27,7 +27,7 @@
   metodo eliminar) esta a medias: teneis que completarlo vosotros.
 -->
         <main class="container-fluid p-5">
-            <h1 class="text-center fw-bolder text-white mb-5">MI LISTA</h1>
+            <h2 class="text-center text-bold fw-bolder text-white mb-5 fs-1">MI LISTA</h2>
             <table class="text-white bg-container container-fluid">
                 <thead class="text-center">
                     <tr>
@@ -35,22 +35,22 @@
                         <th class="fs-4 d-none d-md-table-cell">Género</th>
                         <th class="fs-4 d-none d-md-table-cell">Plataforma</th>
                         <th class="fs-4 d-none d-md-table-cell">Estado</th>
-                        <th>Valoración</th>
-                        <th>Acciones</th>
+                        <th class="fs-4">Valoración</th>
+                        <th class="fs-4">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr th:each="p : ${peliculas}">
-                        <td th:text="${p.titulo}">Título</td>
+                        <td class="fs-5" th:text="${p.titulo}">Título</td>
                         <td class="fs-5 d-none d-md-table-cell" th:text="${p.genero}">Género</td>
                         <td class="fs-5 d-none d-md-table-cell" th:text="${p.plataforma}">Plataforma</td>
                         <td class="fs-5 d-none d-md-table-cell" th:text="${p.estado}">Estado</td>
-                        <td th:text="${p.valoracion}">Valoraciones</td>
-                        <td th:text="${p.acciones}">Acciones</td>
+                        <td class="fs-5" th:text="${p.valoracion}">Valoraciones</td>
+                        <td class="fs-5" th:text="${p.acciones}">Acciones</td>
                     </tr>
                 </tbody>
             </table>
-            <p class="text-white fs-4" th:if="${#lists.isEmpty(peliculas)}">Todavía no hay películas registradas.</p>
+            <p class="text-white fs-5" th:if="${#lists.isEmpty(peliculas)}">Todavía no hay películas registradas.</p>
         </main>
     </body>
 </html>

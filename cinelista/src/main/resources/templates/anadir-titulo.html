@@ -22,15 +22,19 @@
 -->
 
         <main class="container-fluid p-5">
-            <h1 class="text-center fw-bolder text-white mb-5">AÑADIR TÍTULO</h1>
+            <h2 class="text-center text-bold fw-bolder text-white mb-5 fs-1">AÑADIR TÍTULO</h2>
 
-            <form class="bg-container text-center text-white p-5" th:action="@{/anadir-titulo}" th:object="${pelicula}" method="post">
-                <label class="text-start fs-4 mb-2">Título*<br><input type="text" class="fs-5" th:field="*{titulo}" required></label><br>
-                <label class="text-start fs-4 mb-2">Género*<br><input type="text" class="fs-5" th:field="*{titulo}" required></label><br>
-                <label class="text-start fs-4 mb-2">Plataforma*<br><input type="text" class="fs-5" th:field="*{titulo}" required></label><br>
-                <label class="text-start fs-4 mb-2">Estado*<br><input type="text" class="fs-5" th:field="*{titulo}" required></label><br>
-                <label class="text-start fs-4 mb-2">Visualización<br><input type="text" class="fs-5" th:field="*{titulo}" required></label><br>
-                <button type="submit">Guardar</button>
+            <form class="bg-container text-center row text-white p-5" th:action="@{/anadir-titulo}" th:object="${pelicula}" method="post">
+                <div class="offset-4 col-4 row">
+                    <label class="text-start col-12 fs-4 mt-0 mb-2">Título*<br><input type="text" class="mt-0 col-12 fs-5" th:field="*{titulo}" required></label><br>
+                    <label class="text-start col-12 fs-4 mb-2">Género*<br><input type="text" class="mt-0 col-12 fs-5" th:field="*{titulo}" required></label><br>
+                    <label class="text-start col-12 fs-4 mb-2">Plataforma*<br><input type="text" class="mt-0 col-12 fs-5" th:field="*{titulo}" required></label><br>
+                    <label class="text-start col-12 fs-4 mb-2">Estado*<br><input type="text" class="mt-0 col-12 fs-5" th:field="*{titulo}" required></label><br>
+                    <label class="text-start col-12 fs-4 mb-2">Visualización<br><input type="text" class="mt-0 col-12 fs-5" th:field="*{titulo}" required></label><br>
+                </div>
+                <div class="offset-4 col-4 mt-4 row">
+                    <button type="submit" class="btn bg-primary-color py-1 border-0 rounded text-white col-12 fw-bolder fs-5">Añadir título</button>
+                </div>
             </form>
         </main>
     </body>
