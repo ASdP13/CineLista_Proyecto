@@ -127,3 +127,21 @@
     accent-color: var(--color-primary);
     cursor: pointer;
 }
+
+.star-btn{
+    opacity: 0.4;
+    border: 1px solid var(--color-primary);
+}
+
+.star-btn:hover,
+.star-btn:hover ~ .star-btn {
+    opacity: 1;
+    border: 1px solid white !important;
+}
+
+/* Clase simple para cuando el usuario hace clic */
+.star-btn.active,
+.star-btn.active ~ .star-btn {
+    opacity: 1;
+    border: 1px solid var(--color-primary);
+}

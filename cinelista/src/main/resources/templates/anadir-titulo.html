@@ -26,9 +26,19 @@
 
             <form class="bg-container offset-4 col-4 text-center row text-white p-5 border-0 border rounded" th:action="@{/anadir-titulo}" th:object="${pelicula}" method="post">
                 <div class="row">
-                    <label class="text-start col-12 fs-4 mt-0 mb-2">Título*<br><input type="text" class="mt-0 mb-2 col-12 fs-5" th:field="*{titulo}" required></label><br>
-                    <label class="text-start col-12 fs-4 mb-2">Género*<br><select class="mt-0 mb-2 col-12 fs-5" th:field="*{titulo}" required></select></label><br>
-                    <label class="text-start col-12 fs-4 mb-2">Plataforma*<br><select class="mt-0 mb-2 col-12 fs-5" th:field="*{titulo}" required></select></label><br>
+                    <label class="text-start col-12 fs-4 mt-0 mb-2">Título*<br>
+                        <input type="text" class="mt-0 mb-2 col-12 fs-5" th:field="*{titulo}" required>
+                    </label><br>
+                    <label class="text-start col-12 fs-4 mb-2">Género*<br>
+                        <select class="mt-0 mb-2 col-12 fs-5" th:field="*{titulo}" required>
+                            <option value="Fantasía">Fantasía</option>
+                        </select>
+                    </label><br>
+                    <label class="text-start col-12 fs-4 mb-2">Plataforma*<br>
+                        <select class="mt-0 mb-2 col-12 fs-5" th:field="*{titulo}" required>
+                            <option value="Netflix">Netflix</option>
+                        </select>
+                    </label><br>
                     <label class="text-start col-12 fs-4 mb-2">Estado*<br>
                         <div class="d-flex justify-content-center">
                             <div class="me-5">
@@ -42,14 +52,35 @@
                         </div>
                     </label><br>
                     <label class="text-start col-12 fs-4 mb-2">Valoración<br>
-                        <div class="d-flex justify-content-between mt-2">
-                            <button type="button" class="btn bg-primary-color border-0 rounded">⭐<i class="bi bi-star-fill"></i></button>
-                            <button type="button" class="btn bg-primary-color border-0 rounded">⭐<i class="bi bi-star-fill"></i></button>
-                            <button type="button" class="btn bg-primary-color border-0 rounded">⭐<i class="bi bi-star-fill"></i></button>
-                            <button type="button" class="btn bg-primary-color border-0 rounded">⭐<i class="bi bi-star-fill"></i></button>
-                            <button type="button" class="btn bg-primary-color border-0 rounded">⭐<i class="bi bi-star-fill"></i></button>
+                        <div class="d-flex justify-content-between flex-row-reverse mt-2">
+                            <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i class="bi bi-star-fill"></i></button>
+                            <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i class="bi bi-star-fill"></i></button>
+                            <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i class="bi bi-star-fill"></i></button>
+                            <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i class="bi bi-star-fill"></i></button>
+                            <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i class="bi bi-star-fill"></i></button>
                         </div>
                     </label><br>
+
+                    <input type="hidden" class="text-black" name="valoracion" id="rating-value" value="0">
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const buttons = document.querySelectorAll('.star-btn');
+                            const ratingInput = document.getElementById('rating-value');
+
+                            buttons.forEach((button, index) => {
+                                const starValue = 5 - index;
+                                button.addEventListener('click', () => {
+                                    // Guardamos el valor
+                                    ratingInput.value = starValue;
+
+                                    // Limpiamos la estrella activa anterior y marcamos la nueva
+                                    buttons.forEach(btn => btn.classList.remove('active'));
+                                    button.classList.add('active');
+                                });
+                            });
+                        });
+                    </script>
                 </div>
                 <div class="mt-5 px-4 row">
                     <button type="submit" class="btn bg-primary-color py-1 border-0 rounded text-white col-12 fw-bolder fs-5">Añadir título</button>
