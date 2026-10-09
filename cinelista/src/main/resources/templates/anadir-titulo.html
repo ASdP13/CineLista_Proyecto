@@ -30,23 +30,23 @@
                         <input type="text" class="mt-0 mb-2 col-12 fs-5" th:field="*{titulo}" required>
                     </label><br>
                     <label class="text-start col-12 fs-4 mb-2">Género*<br>
-                        <select class="mt-0 mb-2 col-12 fs-5" th:field="*{titulo}" required>
+                        <select class="mt-0 mb-2 col-12 fs-5" th:field="*{genero}" required>
                             <option value="Fantasía">Fantasía</option>
                         </select>
                     </label><br>
                     <label class="text-start col-12 fs-4 mb-2">Plataforma*<br>
-                        <select class="mt-0 mb-2 col-12 fs-5" th:field="*{titulo}" required>
+                        <select class="mt-0 mb-2 col-12 fs-5" th:field="*{plataforma}" required>
                             <option value="Netflix">Netflix</option>
                         </select>
                     </label><br>
                     <label class="text-start col-12 fs-4 mb-2">Estado*<br>
                         <div class="d-flex justify-content-center">
                             <div class="me-5">
-                                <input type="radio" class="radio-custom" id="visto" name="estado" value="visto">
+                                <input type="radio" class="radio-custom" id="visto" th:field="*{estado}" value="true" required>
                                 <label for="visto">Visto</label>
                             </div>
                             <div class="ms-0">
-                                <input type="radio" class="radio-custom" id="novisto" name="estado" value="novisto">
+                                <input type="radio" class="radio-custom" id="novisto" th:field="*{estado}" value="false" required>
                                 <label for="novisto">No visto</label>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                         </div>
                     </label><br>
 
-                    <input type="hidden" class="text-black" name="valoracion" id="rating-value" value="0">
+                    <input type="hidden" class="text-black" th:field="*{valoracion}" id="rating-value">
 
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {

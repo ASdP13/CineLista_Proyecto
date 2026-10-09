@@ -47,7 +47,7 @@ public class PeliculaController {
 
     @PostMapping("/anadir-titulo")
     public String guardar(@ModelAttribute Pelicula pelicula) {
-        // TODO: guardar la pelicula en peliculaRepository antes de redirigir.
+        peliculaRepository.save(pelicula);
         return "redirect:/mi-lista";
     }
 

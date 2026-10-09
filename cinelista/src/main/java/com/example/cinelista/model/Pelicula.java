@@ -53,15 +53,29 @@ public class Pelicula {
         this.genero = genero;
     }
 
+    public String getGenero() {
+        return genero;
+    }
+
     public void setPlataforma(String plataforma) {
-        this.plataforma = Pelicula.this.plataforma;
+        this.plataforma = plataforma;
+    }
+
+    public String getPlataforma() {
+        return plataforma;
     }
 
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
 
-    public void setValoracion(int valoracion) {
-        this.valoracion = Pelicula.this.valoracion;
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setValoracion(int valoracion) { this.valoracion = valoracion; }
+
+    public int getValoracion() {
+        return valoracion;
     }
 }
