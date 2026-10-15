@@ -52,7 +52,7 @@
                         </div>
                     </label><br>
                     <label class="text-start col-12 fs-4 mb-2">Valoración<br>
-                        <div class="d-flex justify-content-between flex-row-reverse mt-2">
+                        <div id="stars-container" class="d-flex justify-content-between flex-row-reverse mt-2">
                             <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i class="bi bi-star-fill"></i></button>
                             <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i class="bi bi-star-fill"></i></button>
                             <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i class="bi bi-star-fill"></i></button>
@@ -65,20 +65,35 @@
 
                     <script>
                         document.addEventListener('DOMContentLoaded', () => {
+                            const starsContainer = document.getElementById('stars-container');
                             const buttons = document.querySelectorAll('.star-btn');
                             const ratingInput = document.getElementById('rating-value');
+                            const radioVisto = document.getElementById('visto');
+                            const radioNoVisto = document.getElementById('novisto');
+
+                            function actualizarEstrellasPorEstado() {
+                                if (radioNoVisto.checked) {
+                                    ratingInput.value = 0;
+                                    buttons.forEach(btn => btn.classList.remove('active'));
+                                    starsContainer.classList.add('disabled');
+                                }else {
+                                    starsContainer.classList.remove('disabled');
+                                }
+                            }
+
+                            radioVisto.addEventListener('change', actualizarEstrellasPorEstado);
+                            radioNoVisto.addEventListener('change', actualizarEstrellasPorEstado);
 
                             buttons.forEach((button, index) => {
                                 const starValue = 5 - index;
                                 button.addEventListener('click', () => {
-                                    // Guardamos el valor
                                     ratingInput.value = starValue;
-
-                                    // Limpiamos la estrella activa anterior y marcamos la nueva
                                     buttons.forEach(btn => btn.classList.remove('active'));
                                     button.classList.add('active');
                                 });
                             });
+
+                            actualizarEstrellasPorEstado();
                         });
                     </script>
                 </div>

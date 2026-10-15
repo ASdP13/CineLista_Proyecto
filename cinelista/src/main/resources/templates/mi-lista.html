@@ -28,8 +28,8 @@
 -->
         <main class="container-fluid p-5">
             <h2 class="text-center text-bold fw-bolder text-white mb-5 fs-1">MI LISTA</h2>
-            <table class="text-white bg-container container-fluid">
-                <thead class="text-center">
+            <table class="text-white text-center bg-container container-fluid">
+                <thead>
                     <tr>
                         <th class="fs-4">Título</th>
                         <th class="fs-4 d-none d-md-table-cell">Género</th>
@@ -44,9 +44,21 @@
                         <td class="fs-5" th:text="${p.titulo}">Título</td>
                         <td class="fs-5 d-none d-md-table-cell" th:text="${p.genero}">Género</td>
                         <td class="fs-5 d-none d-md-table-cell" th:text="${p.plataforma}">Plataforma</td>
-                        <td class="fs-5 d-none d-md-table-cell" th:text="${p.estado}">Estado</td>
-                        <td class="fs-5" th:text="${p.valoracion}">Valoraciones</td>
-                        <td class="fs-5" th:text="${p.acciones}">Acciones</td>
+                        <td class="fs-5 d-none d-md-table-cell" th:text="${p.estado}?'Visto':'No visto'">Estado</td>
+                        <td class="fs-5 text-white d-flex justify-content-center">
+                            <th:block th:if="${p.valoracion != null && p.valoracion > 0}">
+                                <i th:each="i : ${#numbers.sequence(1, p.valoracion)}" class="bi bi-star-fill"></i>
+                                <i th:if="${p.valoracion < 5}" th:each="i : ${#numbers.sequence(p.valoracion + 1, 5)}" class="bi bi-star text-secondary"></i>
+                            </th:block>
+                            <th:block th:if="${p.valoracion == null || p.valoracion == 0}">
+                                <i th:each="i : ${#numbers.sequence(1, 5)}" class="bi bi-star text-secondary"></i>
+                            </th:block>
+                        </td>
+                        <td class="fs-5">
+                            <form th:action="@{/mi-lista/eliminar/{id}(id=${p.id})}" th:object="${p}" method="post">
+                                <button type="submit" class="bg-primary-color text-white border-0 rounded-pill px-3 py-1">Eliminar</button>
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
             </table>
