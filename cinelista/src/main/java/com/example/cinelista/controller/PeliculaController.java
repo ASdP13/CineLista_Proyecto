@@ -36,6 +36,7 @@ public class PeliculaController {
     @GetMapping("/mi-lista")
     public String miLista(Model model) {
         model.addAttribute("peliculas", peliculaRepository.findAll());
+        model.addAttribute("currentPage", "milista");
         return "mi-lista";
     }
 
@@ -49,6 +50,7 @@ public class PeliculaController {
         model.addAttribute("plataformas", java.util.List.of(
             "Netflix", "HBO Max", "Disney+", "Prime Video", "Apple TV+", "Movistar+"
         ));
+        model.addAttribute("currentPage", "anadirtitulo");
         return "anadir-titulo";
     }
 

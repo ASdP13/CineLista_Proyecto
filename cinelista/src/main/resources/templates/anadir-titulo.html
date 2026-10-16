@@ -31,12 +31,16 @@
                     </label><br>
                     <label class="text-start col-12 fs-4 mb-2">Género*<br>
                         <select class="mt-0 mb-2 col-12 fs-5" th:field="*{genero}" required>
-                            <option value="Fantasía">Fantasía</option>
+                            <option value="" selected disabled>Seleccione un género</option>
+                            <option th:each="g : ${generos}" th:value="${g}" th:text="${g}">Género</option>
                         </select>
                     </label><br>
                     <label class="text-start col-12 fs-4 mb-2">Plataforma*<br>
                         <select class="mt-0 mb-2 col-12 fs-5" th:field="*{plataforma}" required>
-                            <option value="Netflix">Netflix</option>
+                            <option value="" selected disabled>Seleccione una plataforma</option>
+                            <option th:each="pl : ${plataformas}"
+                                    th:value="${pl}"
+                                    th:text="${pl}">Plataforma</option>
                         </select>
                     </label><br>
                     <label class="text-start col-12 fs-4 mb-2">Estado*<br>

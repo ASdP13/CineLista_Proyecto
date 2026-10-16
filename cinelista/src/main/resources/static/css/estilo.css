@@ -39,6 +39,11 @@
     font-family: var(--font-primary);
 }
 
+.nav-link:hover{
+    color: white !important;
+    text-decoration-line: underline !important;
+}
+
 .bg-background-cinelista{
     background-color: var(--color-background) !important;
 }

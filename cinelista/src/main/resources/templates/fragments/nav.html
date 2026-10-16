@@ -22,10 +22,14 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav container-fluid d-flex justify-content-end">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Mi lista</a>
+                            <a class="nav-link"
+                               th:classappend="${currentPage == 'milista'} ? 'active'"
+                               th:href="${currentPage == 'milista'} ? '#' : @{/mi-lista}">Mi lista</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Añadir título</a>
+                            <a class="nav-link"
+                               th:classappend="${currentPage == 'anadirtitulo'} ? 'active'"
+                               th:href="${currentPage == 'anadirtitulo'} ? '#' : @{/anadir-titulo}">Añadir título</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Estrenos</a>
