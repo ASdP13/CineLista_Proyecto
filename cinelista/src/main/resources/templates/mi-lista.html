@@ -55,7 +55,8 @@
                             </th:block>
                         </td>
                         <td class="fs-5">
-                            <form th:action="@{/mi-lista/eliminar/{id}(id=${p.id})}" th:object="${p}" method="post">
+                            <form th:action="@{/mi-lista/eliminar/{id}(id=${p.id})}" th:object="${p}" method="post"
+                                th:onsubmit="return confirm(`¿Seguro que desea eliminar esta película?\n\nTítulo: [(${p.titulo})]\nGénero: [(${p.genero})]\nPlataforma: [(${p.plataforma})]\nEstado: [(${p.estado ? 'Visto' : 'No visto'})][(${p.estado ? '\nValoración: ' + '#'.repeat(p.valoracion).replace('#', '★') + '#'.repeat(5 - p.valoracion).replace('#', '☆') : ''})]\n`);">
                                 <button type="submit" class="bg-primary-color text-white border-0 rounded-pill px-3 py-1">Eliminar</button>
                             </form>
                         </td>

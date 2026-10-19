@@ -36,7 +36,6 @@ public class PeliculaRepository {
     }
 
     public boolean deleteById(Long id) {
-        // TODO: eliminar la pelicula con ese id y devolver true/false segun si existia.
-        return false;
+        return peliculas.remove(id)!=null;
     }
 }
