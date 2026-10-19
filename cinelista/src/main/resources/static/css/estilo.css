@@ -29,19 +29,21 @@
 }
 
 .nav-link.active{
-    color: var(--color-primary) !important;
-    text-decoration-line: underline !important;
+    background-color: var(--color-primary) !important;
     font-family: var(--font-primary);
+    margin-right: 2px;
+    margin-left: 2px;
 }
 
 .nav-link{
     color: white !important;
+    border-radius: 25px;
     font-family: var(--font-primary);
 }
 
 .nav-link:hover{
     color: white !important;
-    text-decoration-line: underline !important;
+    box-shadow: 0px 0px 5px 2px white !important;
 }
 
 .bg-background-cinelista{
