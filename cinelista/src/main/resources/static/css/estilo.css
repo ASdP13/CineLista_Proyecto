@@ -8,6 +8,7 @@
     --color-background-alt: #10131A;
 
     --color-primary: #B82525;
+    --color-secondary: #FFFFFF;
 
     --color-container-1: #1B1E27;
     --color-container-2: #232735;
@@ -15,35 +16,41 @@
 
     --color-text-1: #FFFFFF;
     --color-text-2: #C2C7D0;
+    --color-text-3:#8a92a5;
     --color-text-disabled: #5F6775;
 
     --color-border-1: #2C3340;
     --color-border-2: #353C4A;
+    --color-border-3: #454545;
+
+    --color-box-shadow-1: #b8b8b8;
+    --color-box-shadow-2: #9c313b;
+
+
+    --color-red-button-bg: #29191c;
+    --color-red-button-border: #67282e;
+    --color-red-button: #ff777b;
+
+    --color-green-button-bg: #102a23;
+    --color-green-button-border: #145c3c;
+    --color-green-button: #4ade80;
+
+    --color-yellow-button-bg: #302a19;
+    --color-yellow-button-border: #66500b;
+    --color-yellow-button: #ffcc00;
 
     --color-state_success: #22C55E;
-    --color-state-alert: #EAB308;
+    --color-state-warning: #EAB308;
     --color-state-error: #EF4444;
     --color-state-info: #3B82F6;
 
     --font-primary: Roboto, Arial, sans-serif;
+    --font-logo: "Arial Black", Roboto, sans-serif;
 }
 
-.nav-link.active{
-    background-color: var(--color-primary) !important;
-    font-family: var(--font-primary);
-    margin-right: 2px;
-    margin-left: 2px;
-}
-
-.nav-link{
-    color: white !important;
-    border-radius: 25px;
-    font-family: var(--font-primary);
-}
-
-.nav-link:hover{
-    color: white !important;
-    box-shadow: 0px 0px 5px 2px white !important;
+/* ----------------------------------------------------- Fondo ----------------------------------------------------- */
+.body{
+    font-family: var(--font-primary) !important;
 }
 
 .bg-background-cinelista{
@@ -58,14 +65,25 @@
     background-color: var(--color-primary) !important;
 }
 
+/* --------------------------------------------- Textos predeterminados --------------------------------------------- */
 .text-primary-cinelista{
     color: var(--color-primary) !important;
-    font-family: var(--font-primary);
+}
+
+.text-first-color{
+    color: var(--color-text-1) !important;
+}
+
+.text-second-color{
+    color: var(--color-text-2) !important;
+}
+
+.text-third-color{
+    color: var(--color-text-3) !important;
 }
 
 .text-disabled-color{
     color: var(--color-text-disabled) !important;
-    font-family: var(--font-primary);
 }
 
 .text-hero{
@@ -73,7 +91,6 @@
     font-size: 3em !important;
     font-weight: bolder !important;
     font-style: normal !important;
-    font-family: var(--font-primary);
 }
 
 .text-title-page{
@@ -88,7 +105,6 @@
     font-size: 2em !important;
     font-weight: bold !important;
     font-style: normal !important;
-    font-family: var(--font-primary);
 }
 
 .text-subtitle{
@@ -96,7 +112,6 @@
     font-size: 1.5em !important;
     font-weight: normal !important;
     font-style: normal !important;
-    font-family: var(--font-primary);
 }
 
 .text-common{
@@ -105,7 +120,6 @@
     font-weight: normal !important;
     font-style: normal !important;
     line-height: 1.5em !important;
-    font-family: var(--font-primary);
 }
 
 .text-common-secondary{
@@ -114,7 +128,6 @@
     font-weight: normal !important;
     font-style: normal !important;
     line-height: 1.375em !important;
-    font-family: var(--font-primary);
 }
 
 .text-common-details{
@@ -123,13 +136,181 @@
     font-weight: normal !important;
     font-style: normal !important;
     line-height: 1.25em !important;
-    font-family: var(--font-primary);
 }
 
 .text-bold{
-    font-family: "Arial Black" !important;
+    font-family: var(--font-logo) !important;
 }
 
+/* ---------------------------------------------- Barra de navegación ---------------------------------------------- */
+/*ESTILOS DE LA BARRA DEL NAV*/
+.navbar-cinelista {
+    position: relative;
+}
+.navbar-cinelista::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 3%;
+    width: 94%;
+    border-bottom: 0.1em solid var(--color-border-3);
+}
+
+/*ESTILOS PARA EL LOGO*/
+/*Estilos para el enlace del logo*/
+h1 a.nav-logo {
+    display: inline-block;
+    white-space: nowrap;
+    color: inherit !important;
+    text-decoration: none !important;
+}
+/*Estilos para el texto blanco del logo*/
+.nav-logo-1st-half{
+    color: var(--color-text-1) !important;
+    font-size: 1em !important;
+    font-weight: bolder !important;
+    font-style: normal !important;
+    font-family: var(--font-logo) !important;
+    text-decoration: none !important;
+}
+/*Estilos para el texto rojo del logo*/
+.nav-logo-2nd-half{
+    color: var(--color-primary) !important;
+    font-size: 1em !important;
+    font-weight: bolder !important;
+    font-style: normal !important;
+    font-family: var(--font-logo) !important;
+    text-decoration: none !important;
+}
+
+/*ESTILOS PARA BOTONES DEL NAV*/
+.nav-link.active{
+    background: var(--color-primary);
+    color: var(--color-text-1) !important;
+    text-decoration: none !important;
+    font-family: var(--font-primary);
+    font-weight: bold;
+    border-radius: 3em;
+}
+.nav-link{
+    color: white !important;
+    font-family: var(--font-primary);
+    text-decoration: none !important;
+    border-radius: 3em;
+    transition: background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease !important;
+}
+.nav-link:hover{
+    color: white !important;
+    text-decoration: none !important;
+    background-color: var(--color-container-2);
+    box-shadow: 0 0 0.2em 0.2em var(--color-box-shadow-2);
+}
+.nav-link.active:hover {
+    background-color: var(--color-primary);
+    box-shadow: none;
+}
+
+/* ----------------------------------------------- Tabla de Mi lista ----------------------------------------------- */
+.tabla-cinelista {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: var(--color-container-1);
+    border: 1px solid var(--color-border-1);
+    border-radius: 3em;
+    overflow: hidden;
+}
+
+/*CABECERA*/
+.tabla-cinelista-header {
+    background-color: var(--color-container-2);
+}
+.tabla-cinelista th {
+    padding: 1em 0.8em;
+    color: var(--color-text-1);
+    font-family: var(--font-primary);
+    font-weight: bold;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--color-border-2);
+}
+
+/*CELDAS Y ESPACIADO*/
+.tabla-cinelista td {
+    padding: 0.9em 0.8em;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--color-border-1);
+}
+
+/*Hover en cada película*/
+.tabla-cinelista-row {
+    transition: background-color 0.2s ease;
+}
+.tabla-cinelista-row:hover {
+    background-color: var(--color-container-2);
+}
+
+/*Quitar el borde de la última fila*/
+.tabla-cinelista tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/*ESTADO DE PELICULAS*/
+.estado {
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: 1px solid;
+    border-radius: 2em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.estado-visto {
+    color: var(--color-green-button);
+    background-color: var(--color-green-button-bg);
+    border-color: var(--color-green-button-border);
+}
+.estado-no-visto {
+    color: var(--color-yellow-button);
+    background-color: var(--color-yellow-button-bg);
+    border-color: var(--color-yellow-button-border);
+}
+
+/*VALORACIÓN*/
+.tabla-cinelista td:nth-child(5) {
+    text-align: center;
+    white-space: nowrap;
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+}
+.tabla-cinelista td:nth-child(5) i {
+    margin: 0;
+    padding: 0;
+}
+.tabla-cinelista .bi-star-fill {
+    color: #FFFFFF !important;
+}
+.tabla-cinelista .bi-star {
+    color: var(--color-text-disabled) !important;
+}
+
+/*BOTÓN ELIMINAR*/
+.tabla-cinelista td form button {
+    background: var(--color-red-button-bg);
+    color: var(--color-red-button);
+    border: 0.1em solid var(--color-red-button-border);
+    border-radius: 3em;
+    font-weight: bold !important;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.tabla-cinelista td form button:hover {
+    background-color: #921D1D !important;
+    border-color: var(--color-red-button-border);
+    box-shadow: 0 0 0.3em 0.1em var(--color-red-button-border);
+}
+
+/* ----------------------------------------------------- Otros ----------------------------------------------------- */
 .radio-custom{
     accent-color: var(--color-primary);
     cursor: pointer;
