@@ -8,43 +8,43 @@
   siguiendo el wireframe, y sustituir esta version en mi-lista.html.
 -->
 
-    <header class="bg-black container-fluid row m-0">
-        <h1 class="col col-lg-2 text-white m-auto text-bold">
-            <a class="text-white text-bold text-decoration-none"
-                th:href="${currentPage == 'milista'} ? '#' : @{/mi-lista}">
-                <span class="fw-bolder">Cine</span><span class="fw-bolder text-bold text-primary-cinelista">Lista</span>
-            </a>
-        </h1>
-        <nav class="col col-lg-10 navbar navbar-expand-lg navbar-dark bg-black">
-            <div class="container-fluid justify-content-end">
+<header class="bg-background-cinelista container-fluid row m-0 py-2 px-5 navbar-cinelista">
+    <h1 class="col col-lg-2 m-auto">
+        <a class="nav-logo"
+           th:href="${currentPage == 'milista'} ? '#' : @{/mi-lista}">
+            <span class="nav-logo-1st-half">Cine</span><span class="nav-logo-2nd-half">Lista</span>
+        </a>
+    </h1>
+    <nav class="col col-lg-10 navbar navbar-expand-lg navbar-dark bg-background-cinelista">
+        <div class="container-fluid justify-content-end">
 
-                <!-- Botón para celulares (menú hamburguesa) -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <!-- Botón para celulares (menú hamburguesa) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <!-- Enlaces del menú -->
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav container-fluid d-flex justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link px-3 mx-1"
-                               th:classappend="${currentPage == 'milista'} ? 'active'"
-                               th:href="${currentPage == 'milista'} ? '#' : @{/mi-lista}">Mi lista</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 mx-1"
-                               th:classappend="${currentPage == 'anadirtitulo'} ? 'active'"
-                               th:href="${currentPage == 'anadirtitulo'} ? '#' : @{/anadir-titulo}">Añadir título</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 mx-1" href="#">Estrenos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link px-3 mx-1" href="#">Estadísticas</a>
-                        </li>
-                    </ul>
-                </div>
+            <!-- Enlaces del menú -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav container-fluid d-flex justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link px-3 py-2"
+                           th:classappend="${currentPage == 'milista'} ? 'active'"
+                           th:href="${currentPage == 'milista'} ? '#' : @{/mi-lista}">Mi lista</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 py-2 ms-3"
+                           th:classappend="${currentPage == 'anadirtitulo'} ? 'active'"
+                           th:href="${currentPage == 'anadirtitulo'} ? '#' : @{/anadir-titulo}">Añadir título</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 py-2 ms-3" href="#">Estrenos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link px-3 py-2 ms-3" href="#">Estadísticas</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 </html>
