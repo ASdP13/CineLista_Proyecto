@@ -13,7 +13,6 @@ package com.example.cinelista.model;
  *  - valoracion  (Integer, 1-5)
  */
 public class Pelicula {
-
     private Long id;
     private String titulo;
     private String genero;

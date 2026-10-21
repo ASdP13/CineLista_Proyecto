@@ -15,7 +15,6 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 @Component
 public class PeliculaRepository {
-
     private final Map<Long, Pelicula> peliculas = new ConcurrentHashMap<>();
     private final AtomicLong idSequence = new AtomicLong();
 
