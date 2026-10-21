@@ -4,6 +4,7 @@ import com.example.cinelista.model.Estreno;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
@@ -32,8 +33,11 @@ public class EstrenosController {
     );
 
     @GetMapping("/estrenos")
-    public String estrenos() {
+    public String estrenos(Model model) {
+
+        model.addAttribute("currentPage", "estrenos");
         return "estrenos";
+
     }
 
     @GetMapping("/api/estrenos")

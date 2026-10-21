@@ -3,6 +3,7 @@ package com.example.cinelista.controller;
 import com.example.cinelista.model.Estadistica;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 
 import java.util.List;
 
@@ -29,7 +30,8 @@ public class EstadisticasController {
     );
 
     @GetMapping("/estadisticas")
-    public String estadisticas() {
+    public String estadisticas(Model model) {
+        model.addAttribute("currentPage", "estadisticas");
         return "estadisticas";
     }
 

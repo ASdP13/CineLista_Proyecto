@@ -91,6 +91,9 @@
                             buttons.forEach((button, index) => {
                                 const starValue = 5 - index;
                                 button.addEventListener('click', () => {
+                                    if(radioNoVisto.checked){
+                                        return;
+                                    }
                                     ratingInput.value = starValue;
                                     buttons.forEach(btn => btn.classList.remove('active'));
                                     button.classList.add('active');
