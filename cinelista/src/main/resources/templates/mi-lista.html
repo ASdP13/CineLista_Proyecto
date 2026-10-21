@@ -1,75 +1,82 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>CineLista - Mi lista</title>
-    <th:block th:replace="~{fragments/cabecera :: comunes}"></th:block>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/css/estilo.css">
-</head>
-<body class="container-fluid m-0 p-0 bg-background-cinelista">
+    <head>
+        <title>CineLista - Mi lista</title>
+        <th:block th:replace="~{fragments/cabecera :: comunes}"></th:block>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/css/estilo.css">
+    </head>
+    <body class="container-fluid m-0 p-0 bg-background-cinelista">
 
-<header th:replace="~{fragments/nav :: header}"></header>
+        <header th:replace="~{fragments/nav :: header}"></header>
 
-<!--
-  TODO:
-  La tabla de abajo esta reducida a una sola columna a proposito. Falta
-  por vuestra parte:
-   1) Disenar el prototipo con un editor visual (GrapesJS, Pinegrow, etc.)
-   2) Anadir el resto de columnas: genero, plataforma, estado, valoracion
-   3) Anadir un boton de borrar (decidid vosotros si va por fila o en comun,
-      justificandolo)
-   4) Maquetar con Bootstrap
-   5) Comentar en el HTML generado donde dice "autogenerado"
+        <!--
+          TODO:
+          La tabla de abajo esta reducida a una sola columna a proposito. Falta
+          por vuestra parte:
+           1) Disenar el prototipo con un editor visual (GrapesJS, Pinegrow, etc.)
+           2) Anadir el resto de columnas: genero, plataforma, estado, valoracion
+           3) Anadir un boton de borrar (decidid vosotros si va por fila o en comun,
+              justificandolo)
+           4) Maquetar con Bootstrap
+           5) Comentar en el HTML generado donde dice "autogenerado"
 
-  El modelo ya trae la lista de peliculas en la variable "peliculas"
-  (Collection<Pelicula> con id y titulo). La ruta de borrado existe
-  (POST /mi-lista/eliminar/{id}) pero el controlador (PeliculaController,
-  metodo eliminar) esta a medias: teneis que completarlo vosotros.
--->
-<main class="container-fluid p-5">
-    <h2 class="text-center text-bold fw-bolder text-white mb-5 fs-1">MI LISTA</h2>
-    <table class="tabla-cinelista text-white text-center">
-        <thead class="tabla-cinelista-header">
-        <tr>
-            <th class="fs-4 text-third-color">Título</th>
-            <th class="fs-4 d-none d-md-table-cell text-third-color">Género</th>
-            <th class="fs-4 d-none d-md-table-cell text-third-color">Plataforma</th>
-            <th class="fs-4 d-none d-md-table-cell text-third-color">Estado</th>
-            <th class="fs-4 text-third-color">Valoración</th>
-            <th class="fs-4 text-third-color">Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="tabla-cinelista-row" th:each="p : ${peliculas}">
-            <td class="fs-5 fw-bold" th:text="${p.titulo}">Título</td>
-            <td class="fs-5 d-none d-md-table-cell" th:text="${p.genero}">Género</td>
-            <td class="fs-5 d-none d-md-table-cell fw-bold text-second-color" th:text="${p.plataforma}">Plataforma</td>
-            <td class="d-none d-md-table-cell">
-                <span th:class="${p.estado} ? 'estado estado-visto' : 'estado estado-no-visto'"
-                      th:text="${p.estado} ? 'Visto' : 'No visto'">
-                </span>
-            </td>
-            <td class="fs-5 text-white text-center">
-                <th:block th:if="${p.valoracion != null && p.valoracion > 0}">
-                    <i th:each="i : ${#numbers.sequence(1, p.valoracion)}" class="bi bi-star-fill"></i>
-                    <i th:if="${p.valoracion < 5}" th:each="i : ${#numbers.sequence(p.valoracion + 1, 5)}"
-                       class="bi bi-star text-secondary"></i>
-                </th:block>
-                <th:block th:if="${p.valoracion == null || p.valoracion == 0}">
-                    <i th:each="i : ${#numbers.sequence(1, 5)}" class="bi bi-star text-secondary"></i>
-                </th:block>
-            </td>
-            <td class="fs-5">
-                <form th:action="@{/mi-lista/eliminar/{id}(id=${p.id})}" th:object="${p}" method="post"
-                      th:onsubmit="return confirm(`¿Seguro que desea eliminar esta película?\n\nTítulo: [(${p.titulo})]\nGénero: [(${p.genero})]\nPlataforma: [(${p.plataforma})]\nEstado: [(${p.estado ? 'Visto' : 'No visto'})][(${p.estado ? '\nValoración: ' + '#'.repeat(p.valoracion).replace('#', '★') + '#'.repeat(5 - p.valoracion).replace('#', '☆') : ''})]\n`);">
-                    <button type="submit" class="rounded-pill px-3 py-1">Eliminar</button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <p class="text-white fs-5" th:if="${#lists.isEmpty(peliculas)}">Todavía no hay películas registradas.</p>
-</main>
-</body>
+          El modelo ya trae la lista de peliculas en la variable "peliculas"
+          (Collection<Pelicula> con id y titulo). La ruta de borrado existe
+          (POST /mi-lista/eliminar/{id}) pero el controlador (PeliculaController,
+          metodo eliminar) esta a medias: teneis que completarlo vosotros.
+        -->
+        <main class="container-fluid p-5">
+            <h2 class="text-center text-bold fw-bolder text-white mb-5 fs-1">MI LISTA</h2>
+            <div class="offset-8 offset-md-9 offset-lg-10 offset-xl-11 col-4 col-md-3 col-lg-2 col-xl-1 d-flex mb-3 justify-content-end">
+                <a th:href="@{/anadir-titulo}" class="w-100">
+                    <button type="submit" class="btn btn-success py-2 border-0 rounded-pill text-white col-12 fw-bolder fs-5">Añadir</button>
+                </a>
+            </div>
+            <table class="tabla-cinelista text-white text-center">
+                <thead class="tabla-cinelista-header">
+                <tr>
+                    <th class="fs-4 text-third-color">Título</th>
+                    <th class="fs-4 d-none d-lg-table-cell text-third-color">Género</th>
+                    <th class="fs-4 d-none d-md-table-cell text-third-color">Plataforma</th>
+                    <th class="fs-4 d-none d-md-table-cell text-third-color">Estado</th>
+                    <th class="fs-4 text-third-color">Valoración</th>
+                    <th class="fs-4 text-third-color">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr class="tabla-cinelista-row" th:each="p : ${peliculas}">
+                        <td class="fs-5" th:text="${p.titulo}">Título</td>
+                        <td class="fs-5 d-none d-lg-table-cell" th:text="${p.genero}">Género</td>
+                        <td class="fs-5 d-none d-md-table-cell" th:text="${p.plataforma}">Plataforma</td>
+                        <td class="d-none d-md-table-cell">
+                            <span th:class="${p.estado} ? 'estado estado-visto' : 'estado estado-no-visto'"
+                                  th:text="${p.estado} ? 'Visto' : 'No visto'">
+                            </span>
+                        </td>
+                        <td class="fs-5 text-white">
+                            <div class="d-flex justify-content-center align-content-center gap-0">
+                                <th:block th:if="${p.valoracion != null && p.valoracion > 0}">
+                                    <i th:each="i : ${#numbers.sequence(1, p.valoracion)}" class="bi bi-star-fill"></i>
+                                    <i th:if="${p.valoracion < 5}" th:each="i : ${#numbers.sequence(p.valoracion + 1, 5)}"
+                                       class="bi bi-star text-secondary"></i>
+                                </th:block>
+                                <th:block th:if="${p.valoracion == null || p.valoracion == 0}">
+                                    <i th:each="i : ${#numbers.sequence(1, 5)}" class="bi bi-star text-secondary"></i>
+                                </th:block>
+                            </div>
+                        </td>
+                        <td class="fs-5">
+                            <form th:action="@{/mi-lista/eliminar/{id}(id=${p.id})}" th:object="${p}" method="post"
+                                  th:onsubmit="return confirm(`¿Seguro que desea eliminar esta película?\n\nTítulo: [(${p.titulo})]\nGénero: [(${p.genero})]\nPlataforma: [(${p.plataforma})]\nEstado: [(${p.estado ? 'Visto' : 'No visto'})][(${p.estado ? '\nValoración: ' + '#'.repeat(p.valoracion).replace('#', '★') + '#'.repeat(5 - p.valoracion).replace('#', '☆') : ''})]\n`);">
+                                <button type="submit" class="rounded-pill px-3 py-1">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <tr class="text-white fs-5" th:if="${#lists.isEmpty(peliculas)}"><td colspan="6">Todavía no hay películas registradas.</td></tr>
+                </tbody>
+            </table>
+        </main>
+    </body>
 </html>
