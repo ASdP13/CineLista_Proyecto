@@ -25,6 +25,7 @@
 
     --color-box-shadow-1: #b8b8b8;
     --color-box-shadow-2: #9c313b;
+    --color-box-shadow-3: #B8252566;
 
 
     --color-red-button-bg: #29191c;
@@ -49,10 +50,9 @@
 }
 
 /* ----------------------------------------------------- Fondo ----------------------------------------------------- */
-.body{
+body {
     font-family: var(--font-primary) !important;
 }
-
 .bg-background-cinelista{
     background-color: var(--color-background) !important;
 }
@@ -145,7 +145,11 @@
 /* ---------------------------------------------- Barra de navegación ---------------------------------------------- */
 /*ESTILOS DE LA BARRA DEL NAV*/
 .navbar-cinelista {
-    position: relative;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+    box-sizing: border-box;
 }
 .navbar-cinelista::after {
     content: "";
@@ -310,32 +314,109 @@ h1 a.nav-logo {
     box-shadow: 0 0 0.3em 0.1em var(--color-red-button-border);
 }
 
-/* ----------------------------------------------------- Otros ----------------------------------------------------- */
+/*-------------------------------------------- Formulario Añadir Titulo --------------------------------------------*/
+
+/*Tarjeta principal*/
+form.bg-container{
+    max-width: 900px;
+    margin: auto;
+    border: 1px solid var(--color-border-1) !important;
+    border-radius: 2rem !important;
+    box-shadow: 0 0 30px rgba(184,37,37,.15);
+}
+
+/*Inputs y selects*/
+form.bg-container input[type="text"],
+form.bg-container select{
+    width: 100%;
+    background: var(--color-background);
+    color: white;
+    border: 1px solid var(--color-border-1);
+    border-radius: 1rem;
+    padding: .9rem 1rem;
+}
+
+form.bg-container input[type="text"]:focus,
+form.bg-container select:focus{
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+/*Radios de estado*/
 .radio-custom{
+    transform: scale(1.2);
+    margin-right: .5rem;
     accent-color: var(--color-primary);
     cursor: pointer;
 }
 
-.star-btn{
-    opacity: 0.4;
-    border: 1px solid var(--color-primary);
+/*Caja de estrellas*/
+#stars-container{
+    background: var(--color-background);
+    border: 1px solid var(--color-border-1);
+    border-radius: 1rem;
+    padding: 0.5rem 0.75rem;
+    justify-content: flex-end !important;
+    gap: .5rem;
 }
 
-.star-btn:hover,
-.star-btn:hover ~ .star-btn {
+/*Botón guardar*/
+form.bg-container button[type="submit"]{
+    border-radius: 3em !important;
+    padding: 1rem !important;
+    font-size: 1.1rem;
+    box-shadow: 0 0 25px var(--color-box-shadow-3);
+}
+
+/*Separación entre campos*/
+form.bg-container label{
+    margin-bottom: 0.5rem;
+}
+
+/*---------------------------------------------- Valoracion Formulario ----------------------------------------------*/
+
+.star-btn {
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    padding: 0.5rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.35;
+    border: 0.2em solid transparent !important;
+    border-radius: 0.75rem !important;
+    transition:
+            opacity 0.35s ease,
+            border-color 0.35s ease,
+            background-color 0.35s ease;
+}
+
+/*Estrellas seleccionadas*/
+.star-btn.active {
     opacity: 1;
-    border: 1px solid white !important;
+    border-color: var(--color-primary) !important;
 }
 
-/* Clase simple para cuando el usuario hace clic */
-.star-btn.active,
-.star-btn.active ~ .star-btn {
+/*Estrellas iluminadas durante el hover*/
+.star-btn.hover-active {
     opacity: 1;
-    border: 1px solid var(--color-primary);
+    border-color: var(--color-red-button-bg) !important;
+    background-color: var(--color-primary);
 }
 
-#stars-container.disabled button{
-    opacity: 0.4 !important;
-    pointer-events: none !important;
-    border: 1px solid var(--color-primary) !important;/* Evita hovers, clics y cualquier interacción */
+/*Estrellas oscurecidas durante el hover*/
+.star-btn.hover-inactive {
+    opacity: 0.2;
+    background-color: var(--color-background-alt);
+}
+
+#stars-container.disabled {
+    pointer-events: none;
+}
+
+#stars-container.disabled .star-btn {
+    opacity: 0.15 !important;
+    cursor: not-allowed;
 }
