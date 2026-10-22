@@ -58,9 +58,9 @@
                         <td class="fs-5 text-white">
                             <div class="d-flex justify-content-center align-content-center gap-0">
                                 <th:block th:if="${p.valoracion != null && p.valoracion > 0}">
-                                    <i th:each="i : ${#numbers.sequence(1, p.valoracion)}" class="bi bi-star-fill"></i>
+                                    <i th:each="i : ${#numbers.sequence(1, p.valoracion)}" class="bi bi-star-fill text-white"></i>
                                     <i th:if="${p.valoracion < 5}" th:each="i : ${#numbers.sequence(p.valoracion + 1, 5)}"
-                                       class="bi bi-star text-secondary"></i>
+                                       class="bi bi-star text-white"></i>
                                 </th:block>
                                 <th:block th:if="${p.valoracion == null || p.valoracion == 0}">
                                     <i th:each="i : ${#numbers.sequence(1, 5)}" class="bi bi-star text-secondary"></i>
