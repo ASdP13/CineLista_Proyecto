@@ -15,7 +15,6 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 @Component
 public class PeliculaRepository {
-
     private final Map<Long, Pelicula> peliculas = new ConcurrentHashMap<>();
     private final AtomicLong idSequence = new AtomicLong();
 
@@ -36,7 +35,6 @@ public class PeliculaRepository {
     }
 
     public boolean deleteById(Long id) {
-        // TODO: eliminar la pelicula con ese id y devolver true/false segun si existia.
-        return false;
+        return peliculas.remove(id)!=null;
     }
 }

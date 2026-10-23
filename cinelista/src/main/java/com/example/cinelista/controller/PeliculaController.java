@@ -36,28 +36,33 @@ public class PeliculaController {
     @GetMapping("/mi-lista")
     public String miLista(Model model) {
         model.addAttribute("peliculas", peliculaRepository.findAll());
+        model.addAttribute("currentPage", "milista");
         return "mi-lista";
     }
 
     @GetMapping("/anadir-titulo")
     public String formularioAnadir(Model model) {
         model.addAttribute("pelicula", new Pelicula());
+        model.addAttribute("generos", java.util.List.of(
+            "Fantasía", "Ciencia Ficción", "Acción", "Comedia", "Drama", "Terror", "Animación"
+        ));
+
+        model.addAttribute("plataformas", java.util.List.of(
+            "Netflix", "HBO Max", "Disney+", "Prime Video", "Apple TV+", "Movistar+"
+        ));
+        model.addAttribute("currentPage", "anadirtitulo");
         return "anadir-titulo";
     }
 
     @PostMapping("/anadir-titulo")
     public String guardar(@ModelAttribute Pelicula pelicula) {
-        // TODO: guardar la pelicula en peliculaRepository antes de redirigir.
+        peliculaRepository.save(pelicula);
         return "redirect:/mi-lista";
     }
 
     @PostMapping("/mi-lista/eliminar/{id}")
     public String eliminar(@PathVariable Long id) {
-        // TODO:
-        // 1) Anadid en mi-lista.html un boton/formulario que haga POST a
-        //    esta misma ruta ("/mi-lista/eliminar/{id}") por cada pelicula.
-        // 2) Llamad aqui a peliculaRepository.deleteById(id) para que el
-        //    boton borre de verdad la pelicula correspondiente.
+        peliculaRepository.deleteById(id);
         return "redirect:/mi-lista";
     }
 }

@@ -10,12 +10,15 @@ package com.example.cinelista.model;
  *  - genero      (String)
  *  - plataforma  (String)
  *  - estado      (String: "vista" / "pendiente")
- *  - valoracion  (Integer, 0-10)
+ *  - valoracion  (Integer, 1-5)
  */
 public class Pelicula {
-
     private Long id;
     private String titulo;
+    private String genero;
+    private String plataforma;
+    private boolean estado;
+    private int valoracion;
 
     public Pelicula() {
     }
@@ -23,6 +26,10 @@ public class Pelicula {
     public Pelicula(Long id, String titulo) {
         this.id = id;
         this.titulo = titulo;
+        this.genero = genero;
+        this.plataforma = plataforma;
+        this.estado = estado;
+        this.valoracion = valoracion;
     }
 
     public Long getId() {
@@ -39,5 +46,35 @@ public class Pelicula {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setPlataforma(String plataforma) {
+        this.plataforma = plataforma;
+    }
+
+    public String getPlataforma() {
+        return plataforma;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setValoracion(int valoracion) { this.valoracion = valoracion; }
+
+    public int getValoracion() {
+        return valoracion;
     }
 }
