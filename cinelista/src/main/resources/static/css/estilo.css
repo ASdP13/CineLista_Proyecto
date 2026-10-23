@@ -69,6 +69,27 @@
     background-color: var(--color-secondary) !important;
 }
 
+/*autogenerado: botón original de GrapesJS, conservado y reutilizado*/
+/*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
+#btnAgregar {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    background-repeat: repeat;
+    background-position: left top;
+    background-attachment: scroll;
+    background-size: auto;
+    background-image: linear-gradient(#5a2424 0%, #5a2424 100%);
+    padding: 0.5em 3em 0.5em 3em;
+    font-size: 1em;
+    border: 0.2em solid #843535;
+    border-radius: 3em 3em 3em 3em;
+    /*Esta ultima linea añadida a mano por crear separacion con la tabla*/
+    margin: 0 0 1em 1em
+}
+/*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
+/*autogenerado: botón original de GrapesJS, conservado y reutilizado*/
+
 /* --------------------------------------------- Textos predeterminados --------------------------------------------- */
 .text-primary-cinelista{
     color: var(--color-primary) !important;
@@ -93,6 +114,10 @@
 h1 span{
     font-family: var(--font-logo) !important;
     z-index: 9999999999999999999999 !important;
+}
+
+h1:hover{
+    opacity: 0.8;
 }
 
 .text-hero{
@@ -230,7 +255,6 @@ h1 a.nav-logo {
 
 .nav-link.active:hover {
     background-color: var(--color-primary);
-    box-shadow: none;
 }
 
 /* ----------------------------------------------- Tabla de Mi lista ----------------------------------------------- */
