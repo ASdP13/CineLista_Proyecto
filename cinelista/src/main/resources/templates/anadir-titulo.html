@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>CineLista - Añadir Título</title>
+        <th:block th:replace="~{fragments/cabecera :: comunes}"></th:block>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="../static/css/estilo.css">
+    </head>
+    <body class="container-fluid m-0 p-0 bg-background-cinelista">
+        <header th:replace="~{fragments/nav :: header}"></header>
+
+<!--
+  TODO:
+  El formulario de abajo tiene solo el campo "titulo" a proposito. Falta
+  por vuestra parte anadir: genero, plataforma, estado y valoracion,
+  colocando el boton de guardar al final, eligiendo el control html5 mas
+  adecuado para cada campo (checkbox, radio, select, etc.) y maquetandolo
+  con el editor visual + Bootstrap.
+
+  El envio ya esta conectado: hace POST a /anadir-titulo y el controlador
+  (PeliculaController) guarda la pelicula en el repositorio.
+-->
+
+        <main class="container-fluid pe-0 ps-5 px-md-5 py-5 row">
+            <h2 class="text-title text-center mb-5 fs-1">AÑADIR TÍTULO</h2>
+
+            <form class="bg-container col-12 offset-md-1 col-md-10 offset-xl-3 col-xl-6 text-center row text-white p-5 border-0 border rounded" th:action="@{/anadir-titulo}" th:object="${pelicula}" method="post">
+                <div class="row">
+                    <label class="text-start col-12 fs-4 mt-0 mb-2">Título*
+                        <input type="text" class="mt-0 mb-2 col-12 fs-5" th:field="*{titulo}" required>
+                    </label>
+                    <label class="text-start col-12 col-md-6 fs-4 mb-2">Género*
+                        <select class="mt-0 mb-2 col-12 fs-5" th:field="*{genero}" required>
+                            <option value="" selected disabled>Seleccione un género</option>
+                            <option th:each="g : ${generos}" th:value="${g}" th:text="${g}">Género</option>
+                        </select>
+                    </label>
+                    <label class="text-start col-12 col-md-6 fs-4 mb-2">Plataforma*
+                        <select class="mt-0 mb-2 col-12 fs-5" th:field="*{plataforma}" required>
+                            <option value="" selected disabled>Seleccione una plataforma</option>
+                            <option th:each="pl : ${plataformas}"
+                                    th:value="${pl}"
+                                    th:text="${pl}">Plataforma
+                            </option>
+                        </select>
+                    </label>
+                    <label class="text-start col-12 fs-4 mb-2">Estado*
+                        <div class="d-flex justify-content-center">
+                            <div class="me-5">
+                                <input type="radio" class="radio-custom" id="visto" th:field="*{estado}" value="true" required>
+                                <label for="visto">Visto</label>
+                            </div>
+                            <div class="ms-0">
+                                <input type="radio" class="radio-custom" id="novisto" th:field="*{estado}" value="false"
+                                       required>
+                                <label for="novisto">No visto</label>
+                            </div>
+                        </div>
+                    </label>
+                    <label class="text-start col-12 fs-4 mb-2">Valoración
+                        <div id="stars-container" class="d-flex justify-content-between flex-row-reverse mt-2">
+                            <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i
+                                    class="bi bi-star-fill"></i></button>
+                            <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i
+                                    class="bi bi-star-fill"></i></button>
+                            <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i
+                                    class="bi bi-star-fill"></i></button>
+                            <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i
+                                    class="bi bi-star-fill"></i></button>
+                            <button type="button" class="btn bg-primary-color rounded star-btn text-white"><i
+                                    class="bi bi-star-fill"></i></button>
+                        </div>
+                    </label><br>
+
+                    <input type="hidden" class="text-black" th:field="*{valoracion}" id="rating-value">
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const starsContainer = document.getElementById('stars-container');
+                            const buttons = document.querySelectorAll('.star-btn');
+                            const ratingInput = document.getElementById('rating-value');
+                            const radioVisto = document.getElementById('visto');
+                            const radioNoVisto = document.getElementById('novisto');
+
+                            function actualizarEstrellasPorEstado() {
+                                const noVisto = radioNoVisto.checked;
+                                starsContainer.classList.toggle('disabled', noVisto);
+
+                                if (noVisto) {
+                                    ratingInput.value = 0;
+                                    buttons.forEach(btn =>
+                                        btn.classList.remove('active', 'hover-active', 'hover-inactive')
+                                    );
+                                }
+                            }
+
+                            radioVisto.addEventListener('change', actualizarEstrellasPorEstado);
+                            radioNoVisto.addEventListener('change', actualizarEstrellasPorEstado);
+
+                            starsContainer.addEventListener('mouseleave', () => {
+                                buttons.forEach(btn =>
+                                    btn.classList.remove('hover-active', 'hover-inactive')
+                                );
+                            });
+
+                            buttons.forEach((button, index) => {
+                                const starValue = 5 - index;
+
+                                button.addEventListener('mouseenter', () => {
+                                    if (radioNoVisto.checked) return;
+
+                                    buttons.forEach((btn, i) => {
+                                        btn.classList.toggle('hover-active', 5 - i <= starValue);
+                                        btn.classList.toggle('hover-inactive', 5 - i > starValue);
+                                    });
+                                });
+
+                                button.addEventListener('click', () => {
+                                    if (radioNoVisto.checked) return;
+                                    ratingInput.value = starValue;
+                                    buttons.forEach((btn, i) =>
+                                        btn.classList.toggle('active', i >= index)
+                                    );
+                                });
+                            });
+
+                            actualizarEstrellasPorEstado();
+                        });
+                    </script>
+                </div>
+                <div class="mt-5 px-4 row">
+                    <button type="submit" class="btn bg-secondary-color py-2 border-0 rounded-pill text-white col-12 fw-bolder fs-5">Añadir título</button>
+                </div>
+            </form>
+        </main>
+    </body>
+</html>

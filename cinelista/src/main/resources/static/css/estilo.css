@@ -1,0 +1,563 @@
+/*
+  TODO:
+  Definid aqui vuestra paleta de 2 colores y la tipografia elegida para
+  CineLista. Definid tambien cualquier otro estilo.
+*/
+:root {
+    --color-background: #0B0D12;
+    --color-background-alt: #10131A;
+
+    --color-primary: #B82525;
+    --color-secondary: #842326;
+
+    --color-container-1: #1B1E27;
+    --color-container-2: #232735;
+    --color-container-3: #2A3042;
+
+    --color-text-1: #FFFFFF;
+    --color-text-2: #C2C7D0;
+    --color-text-3: #8a92a5;
+    --color-text-disabled: #5F6775;
+
+    --color-border-1: #2C3340;
+    --color-border-2: #353C4A;
+    --color-border-3: #454545;
+
+    --color-box-shadow-1: #b8b8b8;
+    --color-box-shadow-2: #9c313b;
+    --color-box-shadow-3: #B8252566;
+
+    --color-red-button-bg: #29191c;
+    --color-red-button-border: #67282e;
+    --color-red-button: #ff777b;
+
+    --color-green-button-bg: #102a23;
+    --color-green-button-border: #145c3c;
+    --color-green-button: #4ade80;
+
+    --color-yellow-button-bg: #302a19;
+    --color-yellow-button-border: #66500b;
+    --color-yellow-button: #ffcc00;
+
+    --color-state_success: #22C55E;
+    --color-state-warning: #EAB308;
+    --color-state-error: #EF4444;
+    --color-state-info: #3B82F6;
+
+    --font-primary: Roboto, Arial, sans-serif;
+    --font-logo: "Arial Black", Roboto, sans-serif;
+}
+
+/* ----------------------------------------------------- Fondo ----------------------------------------------------- */
+.body{
+    font-family: var(--font-primary) !important;
+}
+
+.bg-background-cinelista{
+    background-color: var(--color-background) !important;
+}
+
+.bg-container{
+    background-color: var(--color-container-1) !important;
+}
+
+.bg-primary-color{
+    background-color: var(--color-primary) !important;
+}
+
+.bg-secondary-color{
+    background-color: var(--color-secondary) !important;
+}
+
+/*autogenerado: botón original de GrapesJS, conservado y reutilizado*/
+/*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
+#btnAgregar {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    background-repeat: repeat;
+    background-position: left top;
+    background-attachment: scroll;
+    background-size: auto;
+    background-image: linear-gradient(#5a2424 0%, #5a2424 100%);
+    padding: 0.5em 3em 0.5em 3em;
+    font-size: 1em;
+    border: 0.2em solid #843535;
+    border-radius: 3em 3em 3em 3em;
+    /*Esta ultima linea añadida a mano por crear separacion con la tabla*/
+    margin: 0 0 1em 1em
+}
+/*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
+/*autogenerado: botón original de GrapesJS, conservado y reutilizado*/
+
+/* --------------------------------------------- Textos predeterminados --------------------------------------------- */
+.text-primary-cinelista{
+    color: var(--color-primary) !important;
+}
+
+.text-first-color{
+    color: var(--color-text-1) !important;
+}
+
+.text-second-color{
+    color: var(--color-text-2) !important;
+}
+
+.text-third-color{
+    color: var(--color-text-3) !important;
+}
+
+.text-disabled-color{
+    color: var(--color-text-disabled) !important;
+}
+
+h1 span{
+    font-family: var(--font-logo) !important;
+    z-index: 9999999999999999999999 !important;
+}
+
+h1:hover{
+    opacity: 0.8;
+}
+
+.text-hero{
+    color: var(--color-text-1) !important;
+    font-size: 3em !important;
+    font-weight: bolder !important;
+    font-style: normal !important;
+}
+
+.text-title-page{
+    color: var(--color-text-1) !important;
+    font-size: 2.5em !important;
+    font-weight: bold !important;
+    font-style: normal !important;
+}
+
+.text-title{
+    color: var(--color-text-1) !important;
+    font-size: 2em !important;
+    font-weight: bold !important;
+    font-style: normal !important;
+    font-family: var(--font-logo);
+}
+
+.text-subtitle{
+    color: var(--color-text-1) !important;
+    font-size: 1.5em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+}
+
+.text-common{
+    color: var(--color-text-1) !important;
+    font-size: 1em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    line-height: 1.5em !important;
+}
+
+.text-common-secondary{
+    color: var(--color-text-1) !important;
+    font-size: 0.875em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    line-height: 1.375em !important;
+}
+
+.text-common-details{
+    color: var(--color-text-1) !important;
+    font-size: 0.75em !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    line-height: 1.25em !important;
+}
+
+.text-bold{
+    font-family: var(--font-logo) !important;
+}
+
+/* ---------------------------------------------- Barra de navegación ---------------------------------------------- */
+/*ESTILOS DE LA BARRA DEL NAV*/
+.navbar-cinelista {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1030;
+    box-sizing: border-box;
+}
+
+.navbar-cinelista::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 0.1em solid var(--color-border-3);
+}
+
+/*ESTILOS PARA EL LOGO*/
+/*Estilos para el enlace del logo*/
+header{
+    position: fixed;
+}
+
+h1 a.nav-logo {
+    display: inline-block;
+    white-space: nowrap;
+    color: inherit !important;
+    text-decoration: none !important;
+}
+/*Estilos para el texto blanco del logo*/
+.nav-logo-1st-half{
+    color: var(--color-text-1) !important;
+    font-size: 1em !important;
+    font-weight: bolder !important;
+    font-style: normal !important;
+    font-family: var(--font-logo) !important;
+    text-decoration: none !important;
+}
+/*Estilos para el texto rojo del logo*/
+.nav-logo-2nd-half{
+    color: var(--color-primary) !important;
+    font-size: 1em !important;
+    font-weight: bolder !important;
+    font-style: normal !important;
+    font-family: var(--font-logo) !important;
+    text-decoration: none !important;
+}
+
+/*ESTILOS PARA BOTONES DEL NAV*/
+.nav-link.active{
+    background: var(--color-primary);
+    color: var(--color-text-1) !important;
+    text-decoration: none !important;
+    font-family: var(--font-primary);
+    border-radius: 3em;
+}
+
+.nav-link{
+    color: white !important;
+    font-family: var(--font-primary);
+    text-decoration: none !important;
+    border-radius: 3em;
+    transition: background-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease !important;
+}
+
+.nav-link:hover{
+    color: white !important;
+    text-decoration: none !important;
+    background-color: var(--color-container-2);
+    box-shadow: 0 0 0.2em 0.2em var(--color-box-shadow-2);
+}
+
+.nav-link.active:hover {
+    background-color: var(--color-primary);
+}
+
+/* ----------------------------------------------- Tabla de Mi lista ----------------------------------------------- */
+.tabla-cinelista {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: var(--color-container-1);
+    border: 1px solid var(--color-border-1);
+    border-radius: 3em;
+    overflow: hidden;
+}
+
+/*CABECERA*/
+.tabla-cinelista-header {
+    background-color: var(--color-container-2);
+}
+
+.tabla-cinelista th {
+    padding: 1em 0.8em;
+    color: var(--color-text-1);
+    font-family: var(--font-primary);
+    font-weight: bold;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--color-border-2);
+}
+
+/*CELDAS Y ESPACIADO*/
+.tabla-cinelista td {
+    padding: 0.9em 0.8em;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--color-border-1);
+}
+
+/*Hover en cada película*/
+.tabla-cinelista-row {
+    transition: background-color 0.2s ease;
+}
+.tabla-cinelista-row:hover {
+    background-color: var(--color-container-2);
+}
+
+/*Quitar el borde de la última fila*/
+.tabla-cinelista tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/*ESTADO DE PELICULAS*/
+.estado {
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: 1px solid;
+    border-radius: 2em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.estado-visto {
+    color: var(--color-green-button);
+    background-color: var(--color-green-button-bg);
+    border-color: var(--color-green-button-border);
+}
+.estado-no-visto {
+    color: var(--color-yellow-button);
+    background-color: var(--color-yellow-button-bg);
+    border-color: var(--color-yellow-button-border);
+}
+
+/*VALORACIÓN*/
+.tabla-cinelista td:nth-child(5) {
+    text-align: center;
+    white-space: nowrap;
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+}
+.tabla-cinelista td:nth-child(5) i {
+    margin: 0;
+    padding: 0;
+}
+
+/*BOTÓN ELIMINAR*/
+.tabla-cinelista td form button {
+    background: var(--color-red-button-bg);
+    color: var(--color-red-button);
+    border: 0.1em solid var(--color-red-button-border);
+    border-radius: 3em;
+    font-weight: bold !important;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.tabla-cinelista td form button:hover {
+    background-color: #921D1D !important;
+    border-color: var(--color-red-button-border);
+    box-shadow: 0 0 0.3em 0.1em var(--color-red-button-border);
+}
+
+/*-------------------------------------------- Formulario Añadir Titulo --------------------------------------------*/
+
+/*Tarjeta principal*/
+form.bg-container{
+    border: 1px solid var(--color-border-1) !important;
+    border-radius: 2rem !important;
+    box-shadow: 0 0 30px rgba(184,37,37,.15);
+}
+
+/* Inputs y selects */
+form.bg-container input[type="text"],
+form.bg-container select {
+    background-color: var(--color-background);
+    color: var(--color-text-1);
+    border: 1px solid var(--color-border-1);
+    border-radius: 1rem;
+    padding: .9rem 1rem;
+}
+
+
+/* Desplegables */
+form.bg-container select {
+    cursor: pointer;
+    appearance: none;
+    padding-right: 2.8rem;
+
+    /* Flecha hecha con CSS */
+    background-image: linear-gradient(45deg, transparent 50%, white 50%),
+    linear-gradient(135deg, white 50%, transparent 50%);
+    background-position: calc(100% - 1rem) 50%,
+    calc(100% - .7rem) 50%;
+    background-size: .3rem .3rem, .3rem .3rem;
+    background-repeat: no-repeat;
+}
+
+/* Flecha roja al enfocar */
+form.bg-container select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 .2rem var(--color-box-shadow-3);
+
+    background-image: linear-gradient(45deg, transparent 50%, var(--color-primary) 50%),
+    linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
+}
+
+/* Opciones del desplegable */
+form.bg-container select option {
+    background-color: var(--color-container-1);
+    color: var(--color-text-1);
+}
+
+@supports (appearance: base-select) {
+    form.bg-container select,
+    form.bg-container select::picker(select) {
+        appearance: base-select;
+    }
+
+    /* Ocultamos la flecha nativa: usamos la tuya (la de degradados) */
+    form.bg-container select::picker-icon {
+        display: none;
+    }
+
+    /* Mantener el estilo rojo mientras el desplegable está abierto */
+    form.bg-container select:open {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 .2rem var(--color-box-shadow-3);
+
+        background-image: linear-gradient(45deg, transparent 50%, var(--color-primary) 50%),
+        linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
+    }
+
+    /* La caja de la lista */
+    form.bg-container select::picker(select) {
+        background-color: var(--color-container-1);
+        border: 1px solid var(--color-border-2);
+        border-radius: 1rem;
+        padding: 0;                 /* sin hueco: las opciones llegan al borde */
+        overflow: hidden;           /* las esquinas redondeadas recortan las opciones */
+        box-shadow: 0 0 20px var(--color-box-shadow-3);
+        margin-top: 0;         /* antes .4rem */
+
+        /* Siempre debajo del select */
+        position-area: bottom span-right;
+        position-try-fallbacks: none;
+        width: anchor-size(width);  /* mismo ancho que el select */
+        max-height: 40vh;           /* si es larga, hace scroll en vez de subir */
+    }
+
+    /* Cada opción */
+    form.bg-container select option {
+        border-radius: 0;
+        padding: .4rem 1rem;        /* antes .8rem */
+        border-bottom: 1px solid var(--color-border-1);
+        transition: background-color .2s ease;
+    }
+
+    /* La última opción sin línea */
+    form.bg-container select option:last-child {
+        border-bottom: none;
+    }
+
+    form.bg-container select option:hover {
+        background-color: var(--color-container-3);
+    }
+
+    form.bg-container select option:checked {
+        background-color: var(--color-primary);
+    }
+
+    /* Ocultar el icono de check que añade el navegador */
+    form.bg-container select option::checkmark {
+        display: none;
+    }
+}
+
+
+/* Mantener el estilo de los campos de texto al enfocarlos */
+form.bg-container input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+/*Radios de estado*/
+.radio-custom{
+    transform: scale(1.2);
+    margin-right: .5rem;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+/*------------------------------ Valoracion Formulario ------------------------------*/
+
+
+/*Caja de estrellas*/
+#stars-container{
+    background: var(--color-background);
+    border: 1px solid var(--color-border-1);
+    border-radius: 1rem;
+    padding: 0.5rem 0.75rem;
+    gap: 0.5rem;
+    justify-content: start !important;
+    flex-wrap: wrap;
+}
+
+.star-btn {
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    padding: 0.5rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.4;
+    border: 0.2em solid transparent !important;
+    border-radius: 0.75rem !important;
+    transition:
+            opacity 0.35s ease,
+            border-color 0.35s ease,
+            background-color 0.35s ease;
+}
+
+/*Estrellas seleccionadas*/
+.star-btn.hover-active {
+    opacity: 1;
+    border-color: var(--color-red-button-bg) !important;
+    background-color: var(--color-primary) !important;
+}
+
+/*Estado fijo tras hacer clic*/
+.star-btn.active {
+    opacity: 1 !important;
+    border-color: var(--color-red-button-bg) !important;
+    background-color: var(--color-primary) !important;
+}
+
+/*Estrellas hover*/
+.star-btn.hover-inactive {
+    opacity: 0.4;
+    background-color: var(--color-background-alt);
+}
+
+.star-btn{
+    opacity: 0.4;
+    border: 1px solid var(--color-primary);
+}
+
+#stars-container.disabled {
+     pointer-events: none;
+}
+
+#stars-container.disabled button{
+    opacity: 0.4 !important;
+    cursor: not-allowed;
+}
+
+/*Botón guardar*/
+form.bg-container button[type="submit"]{
+    font-size: 1.1rem;
+    box-shadow: 0 0 25px var(--color-box-shadow-3);
+}
+
+form.bg-container button[type="submit"]:hover{
+    background-color: var(--color-primary) !important;
+}
+
+/*Separación entre campos*/
+form.bg-container label{
+    margin-bottom: 0.75rem;
+}
