@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>CineLista - Estadísticas</title>
-        <th:block th:replace="~{fragments/cabecera :: comunes}"></th:block>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="stylesheet" href="../static/css/estilo.css">
-    </head>
-    <body class="container-fluid m-0 p-0 bg-background-cinelista">
+<head>
+    <title>CineLista - Estadísticas</title>
+    <th:block th:replace="~{fragments/cabecera :: comunes}"></th:block>
+    <th:block th:replace="~{fragments/cabecera :: datatables}"></th:block>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/estilo.css">
+</head>
+<body class="container-fluid m-0 p-0 bg-background-cinelista">
 
-        <header th:replace="~{fragments/nav :: header}"></header>
+<header th:replace="~{fragments/nav :: header}"></header>
 
 <!--
   TODO:
@@ -20,29 +22,100 @@
      barra grafica, boton de exportar a CSV con nombre propio.
 -->
 
-        <main class="container-fluid p-5 row">
-            <h2 class="text-center text-bold fw-bolder text-white mb-5 fs-1">ESTADÍSTICAS</h2>
-            <table id="tabla-estadisticas">
-                <thead>
-                <tr>
-                    <th>Titulo</th>
-                    <th>Genero</th>
-                    <th>Taquilla</th>
-                    <th>Nota</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Las filas las rellenara DataTables via ajax -->
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </tfoot>
-            </table>
-        </main>
-    </body>
+<main class="container-fluid p-5 row">
+    <h2 class="text-center text-bold fw-bolder text-white mb-5 fs-1">ESTADÍSTICAS</h2>
+    <table id="tabla-estadisticas" class="tabla-cinelista text-white text-center">
+        <thead class="tabla-cinelista-header">
+        <tr>
+            <th class="fs-4 text-third-color">Titulo</th>
+            <th class="fs-4 d-none d-lg-table-cell text-third-color">Genero</th>
+            <th class="fs-4 d-none d-lg-table-cell text-third-color">Taquilla</th>
+            <th class="fs-4 d-none d-lg-table-cell text-third-color">Nota</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Las filas las rellenara DataTables via ajax -->
+
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>Total</th>
+            <th></th>
+            <th id="total-taquilla"></th>
+            <th></th>
+        </tr>
+        </tfoot>
+    </table>
+    <div class="text-center mt-4">
+        <button id="cargar-mas" class="btn btn-primary">
+            Cargar más
+        </button>
+    </div>
+</main>
+<script>
+    $(document).ready(function () {
+        const tabla = $('#tabla-estadisticas').DataTable({
+            ajax: {
+                url: '/api/estadisticas',
+                dataSrc: ''
+            },
+            columns: [
+                { data: 'titulo' },
+                { data: 'genero' },
+                {
+                    data: 'taquilla',
+                    render: function (data, type) {
+                        if (type === 'display') {
+                            return Number(data).toLocaleString('es-ES') + ' €';
+                        }
+                        return data;
+                    }
+                },
+                { data: 'nota' }
+            ],
+
+            // Mostrar 5 películas inicialmente
+            pageLength: 3,
+
+            // Ocultar información, selector de cantidad y paginación
+            dom: 'ft',
+            paging: true,
+            lengthChange: false,
+            info: false,
+
+            language: {
+                search: 'Buscar:'
+            },
+
+            footerCallback: function () {
+                const api = this.api();
+
+                const total = api
+                    .column(2, { search: 'applied' })
+                    .data()
+                    .reduce(function (suma, valor) {
+                        return suma + Number(valor || 0);
+                    }, 0);
+
+                $('#total-taquilla').html(
+                    total.toLocaleString('es-ES') + ' €'
+                );
+            },
+
+            drawCallback: function () {
+                const api = this.api();
+                const mostradas = api.page.len();
+                const encontradas = api.rows({ search: 'applied' }).count();
+
+                $('#cargar-mas').toggle(mostradas < encontradas);
+            }
+        });
+
+        // Cargar 5 películas más cada vez que se pulse el botón
+        $('#cargar-mas').on('click', function () {
+            tabla.page.len(tabla.page.len() + 3).draw();
+        });
+    });
+</script>
+</body>
 </html>

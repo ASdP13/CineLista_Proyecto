@@ -370,13 +370,13 @@ form.bg-container select {
 }
 
 
-/* Desplegables */
+/*Desplegables*/
 form.bg-container select {
     cursor: pointer;
     appearance: none;
     padding-right: 2.8rem;
 
-    /* Flecha hecha con CSS */
+    /*Flecha hecha con CSS*/
     background-image: linear-gradient(45deg, transparent 50%, white 50%),
     linear-gradient(135deg, white 50%, transparent 50%);
     background-position: calc(100% - 1rem) 50%,
@@ -385,7 +385,7 @@ form.bg-container select {
     background-repeat: no-repeat;
 }
 
-/* Flecha roja al enfocar */
+/*Flecha roja al enfocar*/
 form.bg-container select:focus {
     outline: none;
     border-color: var(--color-primary);
@@ -395,7 +395,7 @@ form.bg-container select:focus {
     linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
 }
 
-/* Opciones del desplegable */
+/*Opciones del desplegable*/
 form.bg-container select option {
     background-color: var(--color-container-1);
     color: var(--color-text-1);
@@ -407,39 +407,38 @@ form.bg-container select option {
         appearance: base-select;
     }
 
-    /* Ocultamos la flecha nativa: usamos la tuya (la de degradados) */
+    /*Ocultamos la flecha nativa: usamos la ya creada*/
     form.bg-container select::picker-icon {
         display: none;
     }
 
-    /* Mantener el estilo rojo mientras el desplegable está abierto */
+    /*Mantener el estilo rojo mientras el desplegable está abierto*/
     form.bg-container select:open {
         outline: none;
         border-color: var(--color-primary);
         box-shadow: 0 0 0 .2rem var(--color-box-shadow-3);
-
         background-image: linear-gradient(45deg, transparent 50%, var(--color-primary) 50%),
         linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
     }
 
-    /* La caja de la lista */
+    /*La caja de la lista*/
     form.bg-container select::picker(select) {
         background-color: var(--color-container-1);
         border: 1px solid var(--color-border-2);
         border-radius: 1rem;
-        padding: 0;                 /* sin hueco: las opciones llegan al borde */
-        overflow: hidden;           /* las esquinas redondeadas recortan las opciones */
+        padding: 0;
+        overflow: hidden;
         box-shadow: 0 0 20px var(--color-box-shadow-3);
-        margin-top: 0;         /* antes .4rem */
+        margin-top: 0;
 
-        /* Siempre debajo del select */
+        /*Siempre debajo del select*/
         position-area: bottom span-right;
         position-try-fallbacks: none;
-        width: anchor-size(width);  /* mismo ancho que el select */
-        max-height: 40vh;           /* si es larga, hace scroll en vez de subir */
+        width: anchor-size(width);
+        max-height: 40vh;
     }
 
-    /* Cada opción */
+    /*Cada opción*/
     form.bg-container select option {
         border-radius: 0;
         padding: .4rem 1rem;        /* antes .8rem */
@@ -447,7 +446,7 @@ form.bg-container select option {
         transition: background-color .2s ease;
     }
 
-    /* La última opción sin línea */
+    /*La última opción sin línea*/
     form.bg-container select option:last-child {
         border-bottom: none;
     }
@@ -460,7 +459,7 @@ form.bg-container select option {
         background-color: var(--color-primary);
     }
 
-    /* Ocultar el icono de check que añade el navegador */
+    /*Ocultar el icono de check que añade el navegador*/
     form.bg-container select option::checkmark {
         display: none;
     }
@@ -560,4 +559,163 @@ form.bg-container button[type="submit"]:hover{
 /*Separación entre campos*/
 form.bg-container label{
     margin-bottom: 0.75rem;
+}
+
+
+/* ---------------------------------------------- Estadísticas ---------------------------------------------- */
+
+/*Contenedor de DataTables*/
+#tabla-estadisticas_wrapper {
+    width: 100%;
+    color: var(--color-text-2);
+    font-family: var(--font-primary);
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+/*Buscador*/
+#tabla-estadisticas_wrapper .dataTables_filter {
+    float: none;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-2);
+    font-size: 1rem;
+}
+
+#tabla-estadisticas_wrapper .dataTables_filter label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+#tabla-estadisticas_wrapper .dataTables_filter input {
+    margin-left: 0;
+    padding: 0.75rem 1rem;
+    min-width: 450px;
+    color: var(--color-text-1);
+    background-color: var(--color-container-1);
+    border: 1px solid var(--color-border-2);
+    border-radius: 2rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#tabla-estadisticas_wrapper .dataTables_filter input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem var(--color-box-shadow-3);
+}
+
+/*Tabla*/
+#tabla-estadisticas {
+    width: 100% !important;
+    margin-top: 0;
+    border: 1px solid var(--color-border-1);
+    border-radius: 1.5rem;
+    border-spacing: 0;
+    overflow: hidden;
+    background-color: var(--color-container-1);
+}
+
+/*Cabecera*/
+#tabla-estadisticas thead th {
+    padding: 1.2rem 1rem;
+    color: var(--color-text-1);
+    background-color: var(--color-container-2);
+    border-bottom: 1px solid var(--color-border-2);
+    font-weight: 700;
+}
+
+/*Filas*/
+#tabla-estadisticas tbody tr {
+    background-color: var(--color-container-1);
+    transition: background-color 0.2s ease;
+}
+
+#tabla-estadisticas tbody tr:hover {
+    background-color: var(--color-container-2);
+}
+
+#tabla-estadisticas tbody td {
+    padding: 1rem;
+    color: var(--color-text-2);
+    border-top: 0;
+    border-bottom: 1px solid var(--color-border-1);
+}
+
+/*Pie y total*/
+#tabla-estadisticas tfoot th {
+    padding: 1.1rem 1rem;
+    color: var(--color-text-1);
+    background-color: var(--color-container-2);
+    border-top: 1px solid var(--color-border-2);
+    border-bottom: 0;
+}
+
+#total-taquilla {
+    color: var(--color-red-button);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/*Botón Cargar más*/
+#cargar-mas {
+    padding: 0.75rem 2.5rem;
+    color: var(--color-text-1);
+    background-color: var(--color-red-button-bg);
+    border: 1px solid var(--color-red-button-border);
+    border-radius: 3rem;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    transition: background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+#cargar-mas:hover {
+    color: var(--color-text-1);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 1rem var(--color-box-shadow-3);
+    transform: translateY(-2px);
+}
+
+#cargar-mas:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+/*Mensaje cuando la búsqueda no encuentra películas*/
+#tabla-estadisticas tbody td.dataTables_empty {
+    padding: 2rem;
+    color: var(--color-text-3);
+}
+
+/*Ajustes para pantallas pequeñas*/
+@media (max-width: 576px) {
+    #tabla-estadisticas_wrapper .dataTables_filter {
+        justify-content: stretch;
+    }
+
+    #tabla-estadisticas_wrapper .dataTables_filter label {
+        width: 100%;
+    }
+
+    #tabla-estadisticas_wrapper .dataTables_filter input {
+        width: 100%;
+        min-width: 0;
+        margin-top: 0.5rem;
+    }
+
+    #tabla-estadisticas thead th,
+    #tabla-estadisticas tbody td,
+    #tabla-estadisticas tfoot th {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    #cargar-mas {
+        width: 100%;
+    }
 }
