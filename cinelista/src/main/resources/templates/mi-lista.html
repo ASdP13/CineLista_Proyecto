@@ -53,9 +53,9 @@
                 </thead>
                 <tbody>
                     <tr class="tabla-cinelista-row" th:each="p : ${peliculas}">
-                        <td class="fs-5" th:text="${p.titulo}">Título</td>
+                        <td class="fs-5 fw-bold" th:text="${p.titulo}">Título</td>
                         <td class="fs-5 d-none d-lg-table-cell" th:text="${p.genero}">Género</td>
-                        <td class="fs-5 d-none d-md-table-cell" th:text="${p.plataforma}">Plataforma</td>
+                        <td class="fs-5 d-none d-md-table-cell text-second-color fw-bold" th:text="${p.plataforma}">Plataforma</td>
                         <td class="d-none d-md-table-cell">
                             <span th:class="${p.estado} ? 'estado estado-visto' : 'estado estado-no-visto'"
                                   th:text="${p.estado} ? 'Visto' : 'No visto'">
