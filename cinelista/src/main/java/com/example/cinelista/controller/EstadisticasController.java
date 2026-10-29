@@ -13,11 +13,11 @@ import java.util.List;
 public class EstadisticasController {
 
     private static final List<Estadistica> ESTADISTICAS = List.of(
-            new Estadistica(1L, "Nebula Roja", "Ciencia ficcion", 82000000, 4),
-            new Estadistica(2L, "El Ultimo Faro", "Drama", 15000000, 5),
-            new Estadistica(3L, "Codigo Fantasma", "Thriller", 47000000, 3),
-            new Estadistica(4L, "Risas de Medianoche", "Comedia", 23000000, 2),
-            new Estadistica(5L, "Fuego Cruzado", "Accion", 96000000, 4)
+        new Estadistica(1L, "Nébula Roja", "Ciencia ficcion", 82000000, 4),
+        new Estadistica(2L, "El Último Faro", "Drama", 15000000, 5),
+        new Estadistica(3L, "Código Fantasma", "Thriller", 47000000, 3),
+        new Estadistica(4L, "Risas de Medianoche", "Comedia", 23000000, 2),
+        new Estadistica(5L, "Fuego Cruzado", "Accion", 96000000, 4)
     );
 
     @GetMapping("/estadisticas")
