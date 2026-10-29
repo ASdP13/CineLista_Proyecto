@@ -25,7 +25,7 @@
 <main class="container-fluid p-5 row">
     <h2 class="text-center text-bold fw-bolder text-white mb-5 fs-1">ESTADÍSTICAS</h2>
     <table id="tabla-estadisticas" class="tabla-cinelista text-white text-center">
-        <thead class="tabla-cinelista-header">
+        <thead class="tabla-cinelista-header text-center">
         <tr>
             <th class="fs-4 text-third-color">Titulo</th>
             <th class="fs-4 d-none d-lg-table-cell text-third-color">Genero</th>
@@ -37,11 +37,11 @@
         <!-- Las filas las rellenara DataTables via ajax -->
 
         </tbody>
-        <tfoot>
+        <tfoot class="text-center">
         <tr>
-            <th>Total</th>
+            <th class="text-center">Total</th>
             <th></th>
-            <th id="total-taquilla"></th>
+            <th id="total-taquilla" class="text-center"></th>
             <th></th>
         </tr>
         </tfoot>
@@ -84,7 +84,7 @@
             info: false,
 
             language: {
-                search: 'Buscar:'
+                search: '',
             },
 
             footerCallback: function () {
@@ -110,7 +110,7 @@
                 $('#cargar-mas').toggle(mostradas < encontradas);
             }
         });
-
+        $('#tabla-estadisticas_filter input').attr('placeholder','Buscar película');
         // Cargar 5 películas más cada vez que se pulse el botón
         $('#cargar-mas').on('click', function () {
             tabla.page.len(tabla.page.len() + 3).draw();
