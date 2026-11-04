@@ -90,18 +90,17 @@
                             const porcentaje = Math.round(data / 5 * 100);
 
                             return `
-                            <div class="progress bg-transparent border border-secondary"
-                                 style="height: 24px; min-width: 100px;">
-                                <div class="progress-bar bg-primary-color text-white fw-bold
-                                            d-flex align-items-center justify-content-center"
-                                     role="progressbar"
-                                     style="width: ${porcentaje}%;"
-                                     aria-valuenow="${data}"
-                                     aria-valuemin="0"
-                                     aria-valuemax="5">
-                                    ${data} / 5
-                                </div>
-                            </div>`;
+                                <div class="progress">
+                                    <div class="progress-bar text-white fw-bold
+                                                d-flex align-items-center justify-content-center"
+                                         role="progressbar"
+                                         style="width: ${porcentaje}%;"
+                                         aria-valuenow="${data}"
+                                         aria-valuemin="0"
+                                         aria-valuemax="5">
+                                        ${data} / 5
+                                    </div>
+                                </div>`;
                         }
                     }
                 ],
