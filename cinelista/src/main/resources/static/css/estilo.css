@@ -538,7 +538,7 @@ form.bg-container input[type="text"]:focus {
 }
 
 #stars-container.disabled {
-     pointer-events: none;
+    pointer-events: none;
 }
 
 #stars-container.disabled button{
@@ -563,6 +563,11 @@ form.bg-container label{
 
 
 /* ---------------------------------------------- Estadísticas ---------------------------------------------- */
+
+#buscador{
+    margin-left: -3rem;
+    color: var(--color-text-2);
+}
 
 /*Contenedor de DataTables*/
 #tabla-estadisticas_wrapper {

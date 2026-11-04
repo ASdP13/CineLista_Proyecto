@@ -10,25 +10,25 @@
     </head>
     <body class="container-fluid m-0 p-0 bg-background-cinelista">
 
-        <header th:replace="~{fragments/nav :: header}"></header>
+    <header th:replace="~{fragments/nav :: header}"></header>
 
-        <!--
-          TODO:
-          1) Comprobar jQuery y DataTables (CDN o local) ya agregadas
-          2) Inicializad DataTables sobre la tabla de abajo con la opcion "ajax"
-             apuntando a GET /api/estadisticas (endpoint que crearéis vosotros
-             en el controlador EstadisticasController).
-          3) Id completando: buscador, footerCallback con el total, columna con
-             barra grafica, boton de exportar a CSV con nombre propio.
-        -->
+    <!--
+      TODO:
+      1) Comprobar jQuery y DataTables (CDN o local) ya agregadas
+      2) Inicializad DataTables sobre la tabla de abajo con la opcion "ajax"
+         apuntando a GET /api/estadisticas (endpoint que crearéis vosotros
+         en el controlador EstadisticasController).
+      3) Id completando: buscador, footerCallback con el total, columna con
+         barra grafica, boton de exportar a CSV con nombre propio.
+    -->
 
         <main class="container-fluid p-5 row">
             <h2 class="text-center text-bold fw-bolder text-white mb-5 fs-1">ESTADÍSTICAS</h2>
             <table id="tabla-estadisticas" class="tabla-cinelista text-white text-center">
                 <thead class="tabla-cinelista-header text-center">
                 <tr>
-                    <th class="fs-4 text-third-color">Titulo</th>
-                    <th class="fs-4 d-none d-lg-table-cell text-third-color">Genero</th>
+                    <th class="fs-4 text-third-color">Título</th>
+                    <th class="fs-4 d-none d-lg-table-cell text-third-color">Género</th>
                     <th class="fs-4 d-none d-lg-table-cell text-third-color">Taquilla</th>
                     <th class="fs-4 d-none d-lg-table-cell text-third-color">Nota</th>
                 </tr>
@@ -81,7 +81,28 @@
                                 return data;
                             }
                         },
-                        { data: 'nota' }
+                        {
+                            data: 'nota',
+                            render: function (data, type, row) {
+                                if (type !== 'display') return data;
+
+                                // Calculamos el porcentaje sobre el máximo de la nota (que es 5)
+                                const maxNota = 5;
+                                const pct = Math.round((data / maxNota) * 100);
+
+                                // Retornamos el HTML de la barra usando comillas invertidas para que renderice
+                                return `<div class="progress bg-transparent border border-secondary" style="height: 24px; min-width: 100px;">
+                                                    <div class="progress-bar bg-primary-color text-white fw-bold d-flex align-items-center justify-content-center"
+                                                         role="progressbar"
+                                                         style="width: ${pct}%;"
+                                                         aria-valuenow="${data}"
+                                                         aria-valuemin="0"
+                                                         aria-valuemax="5">
+                                                         ${data} / 5
+                                                    </div>
+                                                </div>`;
+                            }
+                        }
                     ],
 
                     pageLength: 3,
@@ -97,6 +118,12 @@
                     initComplete: function () {
                         const buscadorInput = $('#tabla-estadisticas_filter input');
                         buscadorInput.attr('placeholder', 'Buscar película');
+                        const contenedorFiltro = $('#tabla-estadisticas_filter');
+                        contenedorFiltro.html(buscadorInput);
+
+                        buscadorInput.wrap('<div class="input-group"></div>');
+                        buscadorInput.after('<span class="input-group-text bg-transparent border-0 text-secondary" id="buscador"><i class="bi bi-search"></i></span>');
+                        buscadorInput.addClass('pe-5');
 
                         // Desvincula las funciones automáticas de DataTables
                         buscadorInput.off('keyup.DT search.DT input.DT');
