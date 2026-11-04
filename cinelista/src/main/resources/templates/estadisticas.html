@@ -4,6 +4,7 @@
         <title>CineLista - Estadísticas</title>
         <th:block th:replace="~{fragments/cabecera :: comunes}"></th:block>
         <th:block th:replace="~{fragments/cabecera :: datatables}"></th:block>
+        <th:block th:replace="~{fragments/cabecera :: datatables-buttons}"></th:block>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <link rel="stylesheet" href="../static/css/estilo.css">
@@ -42,7 +43,7 @@
                     <th class="text-center">Total</th>
                     <th></th>
                     <th id="total-taquilla" class="text-center"></th>
-                    <th></th>
+                    <th id="total-registros" class="text-end"></th>
                 </tr>
                 </tfoot>
             </table>
@@ -52,116 +53,133 @@
                 </button>
             </div>
         </main>
-        <script>
-            // 1. Función para limpiar de raíz las tildes de cualquier texto
-            function quitarTildes(texto) {
-                return !texto ? '' : texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-            }
+    <script>
+        // Quita las tildes y convierte el texto a minúsculas
+        function quitarTildes(texto) {
+            return (texto || '').normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '').toLowerCase();
+        }
 
-            // 2. Registramos el limpiador en el motor interno de DataTables para las columnas
-            jQuery.fn.DataTable.ext.type.search.string = function (data) {
-                return quitarTildes(data);
-            };
+        // Permite buscar palabras aunque tengan tildes
+        jQuery.fn.DataTable.ext.type.search.string = quitarTildes;
+        console.log('Versión DataTables:', $.fn.dataTable.version);
+        console.log('Extensión Buttons:', $.fn.dataTable.Buttons);
 
-            $(document).ready(function () {
-                const tabla = $('#tabla-estadisticas').DataTable({
-                    ajax: {
-                        url: '/api/estadisticas',
-                        dataSrc: ''
+        $(document).ready(function () {
+            const tabla = $('#tabla-estadisticas').DataTable({
+                // Carga las películas desde el controlador
+                ajax: { url: '/api/estadisticas', dataSrc: '' },
+
+                // Indica los datos que aparecen en cada columna
+                columns: [
+                    { data: 'titulo', type: 'string' },
+                    { data: 'genero', type: 'string' },
+                    {
+                        data: 'taquilla',
+                        // Muestra la taquilla con formato español y euros
+                        render: (data, type) => type === 'display'
+                            ? Number(data).toLocaleString('es-ES') + ' €'
+                            : data
                     },
-                    columns: [
-                        { data: 'titulo', type: 'string' },
-                        { data: 'genero', type: 'string' },
-                        {
-                            data: 'taquilla',
-                            render: function (data, type) {
-                                if (type === 'display') {
-                                    return Number(data).toLocaleString('es-ES') + ' €';
-                                }
-                                return data;
-                            }
-                        },
-                        {
-                            data: 'nota',
-                            render: function (data, type, row) {
-                                if (type !== 'display') return data;
+                    {
+                        data: 'nota',
+                        // Muestra la nota como una barra de progreso sobre 5
+                        render: (data, type) => {
+                            if (type !== 'display') return data;
 
-                                // Calculamos el porcentaje sobre el máximo de la nota (que es 5)
-                                const maxNota = 5;
-                                const pct = Math.round((data / maxNota) * 100);
+                            const porcentaje = Math.round(data / 5 * 100);
 
-                                // Retornamos el HTML de la barra usando comillas invertidas para que renderice
-                                return `<div class="progress bg-transparent border border-secondary" style="height: 24px; min-width: 100px;">
-                                                    <div class="progress-bar bg-primary-color text-white fw-bold d-flex align-items-center justify-content-center"
-                                                         role="progressbar"
-                                                         style="width: ${pct}%;"
-                                                         aria-valuenow="${data}"
-                                                         aria-valuemin="0"
-                                                         aria-valuemax="5">
-                                                         ${data} / 5
-                                                    </div>
-                                                </div>`;
-                            }
+                            return `
+                            <div class="progress bg-transparent border border-secondary"
+                                 style="height: 24px; min-width: 100px;">
+                                <div class="progress-bar bg-primary-color text-white fw-bold
+                                            d-flex align-items-center justify-content-center"
+                                     role="progressbar"
+                                     style="width: ${porcentaje}%;"
+                                     aria-valuenow="${data}"
+                                     aria-valuemin="0"
+                                     aria-valuemax="5">
+                                    ${data} / 5
+                                </div>
+                            </div>`;
                         }
-                    ],
-
-                    pageLength: 3,
-                    dom: 'ft',
-                    paging: true,
-                    lengthChange: false,
-                    info: false,
-
-                    language: {
-                        search: '',
-                    },
-
-                    initComplete: function () {
-                        const buscadorInput = $('#tabla-estadisticas_filter input');
-                        buscadorInput.attr('placeholder', 'Buscar película');
-                        const contenedorFiltro = $('#tabla-estadisticas_filter');
-                        contenedorFiltro.html(buscadorInput);
-
-                        buscadorInput.wrap('<div class="input-group"></div>');
-                        buscadorInput.after('<span class="input-group-text bg-transparent border-0 text-secondary" id="buscador"><i class="bi bi-search"></i></span>');
-                        buscadorInput.addClass('pe-5');
-
-                        // Desvincula las funciones automáticas de DataTables
-                        buscadorInput.off('keyup.DT search.DT input.DT');
-
-                        // Filtro limpio insensible a las tildes
-                        buscadorInput.on('keyup input', function () {
-                            const textoLimpio = quitarTildes($(this).val());
-                            tabla.search(textoLimpio).draw();
-                        });
-                    },
-
-                    footerCallback: function () {
-                        const api = this.api();
-                        const total = api
-                            .column(2, { search: 'applied' })
-                            .data()
-                            .reduce(function (suma, valor) {
-                                return suma + Number(valor || 0);
-                            }, 0);
-
-                        $('#total-taquilla').html(
-                            total.toLocaleString('es-ES') + ' €'
-                        );
-                    },
-
-                    drawCallback: function () {
-                        const api = this.api();
-                        const mostradas = api.page.len();
-                        const encontradas = api.rows({ search: 'applied' }).count();
-
-                        $('#cargar-mas').toggle(mostradas < encontradas);
                     }
-                });
-                // Cargar 3 películas más cada vez que se pulse el botón
-                $('#cargar-mas').on('click', function () {
-                    tabla.page.len(tabla.page.len() + 3).draw();
-                });
+                ],
+
+                // Muestra 3 películas al principio y oculta opciones innecesarias
+                pageLength: 3,
+                dom: '<"estadisticas-controles"<"estadisticas-buscador"f><"estadisticas-exportar"B>>t',
+                buttons: [
+                    {
+                        extend: 'csvHtml5',
+                        text:  '<i class="bi bi-download me-1"></i> Exportar CSV',
+                        className: 'btn-exportar-csv',
+                        filename: 'estadisticas_cinelista',
+                        fieldSeparator: ';',
+                        bom: true
+                    }
+                ],
+                lengthChange: false,
+                info: false,
+                language: { search: '' },
+
+                // Configura el buscador con placeholder e icono de lupa
+                initComplete: function () {
+                    const buscador = $('#tabla-estadisticas_filter input')
+                        .attr('placeholder', 'Buscar película')
+                        .off('.DT');
+
+                    const filtro = $('#tabla-estadisticas_filter');
+                    filtro.html(buscador);
+                    buscador.wrap('<div class="input-group"></div>');
+
+                    buscador.after(`
+                    <span id="buscador" class="input-group-text bg-transparent border-0">
+                        <i class="bi bi-search"></i>
+                    </span>
+                `);
+
+                    buscador.addClass('pe-5');
+
+                    // Busca sin distinguir entre tildes y mayúsculas
+                    buscador.on('input', function () {
+                        tabla.search(quitarTildes(this.value)).draw();
+                    });
+                },
+
+                // Suma la taquilla de las películas visibles en la tabla
+                footerCallback: function () {
+                    const total = this.api().column(2, { page: 'current' })
+                        .data()
+                        .reduce((suma, valor) => suma + Number(valor || 0), 0);
+
+                    $('#total-taquilla').html(total.toLocaleString('es-ES') + ' €');
+                },
+
+                // Oculta el botón cuando ya se muestran todos los resultados
+                drawCallback: function () {
+                    const api = this.api();
+
+                    // Número de películas mostradas y total de resultados
+                    const mostradas = api.rows({ page: 'current' }).count();
+                    const total = api.rows({ search: 'applied' }).count();
+
+                    $('#total-registros').html(
+                        `Mostrando ${mostradas} de ${total} películas`
+                    );
+
+                    // Oculta el botón cuando ya se muestran todos los resultados
+                    $('#cargar-mas').toggle(
+                        api.page.len() < total
+                    );
+                }
             });
-        </script>
+
+            // Muestra 3 películas más cada vez que se pulsa el botón
+            $('#cargar-mas').on('click', function () {
+                tabla.page.len(tabla.page.len() + 3).draw();
+            });
+        });
+    </script>
     </body>
 </html>

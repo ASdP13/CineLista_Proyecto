@@ -1,140 +1,166 @@
-/*
-  TODO:
-  Definid aqui vuestra paleta de 2 colores y la tipografia elegida para
-  CineLista. Definid tambien cualquier otro estilo.
-*/
 :root {
+    /* Fondos */
     --color-background: #0B0D12;
     --color-background-alt: #10131A;
 
+    /* Colores principales */
     --color-primary: #B82525;
     --color-secondary: #842326;
 
+    /* Contenedores */
     --color-container-1: #1B1E27;
     --color-container-2: #232735;
     --color-container-3: #2A3042;
 
+    /* Textos */
     --color-text-1: #FFFFFF;
     --color-text-2: #C2C7D0;
     --color-text-3: #8a92a5;
     --color-text-disabled: #5F6775;
 
+    /* Bordes */
     --color-border-1: #2C3340;
     --color-border-2: #353C4A;
     --color-border-3: #454545;
 
+    /* Sombras */
     --color-box-shadow-1: #b8b8b8;
     --color-box-shadow-2: #9c313b;
     --color-box-shadow-3: #B8252566;
+    --color-shadow-red-soft: rgba(184, 37, 37, 0.15);
+    --color-shadow-green: #145c3c55;
 
+    /* Botones rojos */
     --color-red-button-bg: #29191c;
     --color-red-button-border: #67282e;
     --color-red-button: #ff777b;
 
+    /* Botones verdes */
     --color-green-button-bg: #102a23;
     --color-green-button-border: #145c3c;
     --color-green-button: #4ade80;
 
+    /* Botones amarillos */
     --color-yellow-button-bg: #302a19;
     --color-yellow-button-border: #66500b;
     --color-yellow-button: #ffcc00;
 
+    /* Estados */
     --color-state_success: #22C55E;
     --color-state-warning: #EAB308;
     --color-state-error: #EF4444;
     --color-state-info: #3B82F6;
 
+    /* Colores adicionales */
+    --color-add-button-bg: #5a2424;
+    --color-add-button-border: #843535;
+    --color-primary-hover: #921D1D;
+    --color-green-button-hover: #145c3c;
+
+    /* Tipografías */
     --font-primary: Roboto, Arial, sans-serif;
     --font-logo: "Arial Black", Roboto, sans-serif;
 }
 
-/* ----------------------------------------------------- Fondo ----------------------------------------------------- */
-.body{
+
+/* -----------------------------------------------------
+   Fondo y colores generales
+----------------------------------------------------- */
+
+.body {
     font-family: var(--font-primary) !important;
 }
 
-.bg-background-cinelista{
+.bg-background-cinelista {
     background-color: var(--color-background) !important;
 }
 
-.bg-container{
+.bg-container {
     background-color: var(--color-container-1) !important;
 }
 
-.bg-primary-color{
+.bg-primary-color {
     background-color: var(--color-primary) !important;
 }
 
-.bg-secondary-color{
+.bg-secondary-color {
     background-color: var(--color-secondary) !important;
 }
 
-/*autogenerado: botón original de GrapesJS, conservado y reutilizado*/
-/*\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/*/
+
+/* -----------------------------------------------------
+   Botón original de GrapesJS
+----------------------------------------------------- */
+
 #btnAgregar {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--color-text-1);
     background-repeat: repeat;
     background-position: left top;
     background-attachment: scroll;
     background-size: auto;
-    background-image: linear-gradient(#5a2424 0%, #5a2424 100%);
-    padding: 0.5em 3em 0.5em 3em;
+    background-image: linear-gradient(
+            var(--color-add-button-bg) 0%,
+            var(--color-add-button-bg) 100%
+    );
+    padding: 0.5em 3em;
     font-size: 1em;
-    border: 0.2em solid #843535;
-    border-radius: 3em 3em 3em 3em;
-    /*Esta ultima linea añadida a mano por crear separacion con la tabla*/
-    margin: 0 0 1em 1em
+    border: 0.2em solid var(--color-add-button-border);
+    border-radius: 3em;
+    /* Separación con la tabla */
+    margin: 0 0 1em 1em;
 }
-/*/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\*/
-/*autogenerado: botón original de GrapesJS, conservado y reutilizado*/
 
-/* --------------------------------------------- Textos predeterminados --------------------------------------------- */
-.text-primary-cinelista{
+
+/* -----------------------------------------------------
+   Textos predeterminados
+----------------------------------------------------- */
+
+.text-primary-cinelista {
     color: var(--color-primary) !important;
 }
 
-.text-first-color{
+.text-first-color {
     color: var(--color-text-1) !important;
 }
 
-.text-second-color{
+.text-second-color {
     color: var(--color-text-2) !important;
 }
 
-.text-third-color{
+.text-third-color {
     color: var(--color-text-3) !important;
 }
 
-.text-disabled-color{
+.text-disabled-color {
     color: var(--color-text-disabled) !important;
 }
 
-h1 span{
+h1 span {
     font-family: var(--font-logo) !important;
     z-index: 9999999999999999999999 !important;
 }
 
-h1:hover{
+h1:hover {
     opacity: 0.8;
 }
 
-.text-hero{
+.text-hero {
     color: var(--color-text-1) !important;
     font-size: 3em !important;
     font-weight: bolder !important;
     font-style: normal !important;
 }
 
-.text-title-page{
+.text-title-page {
     color: var(--color-text-1) !important;
     font-size: 2.5em !important;
     font-weight: bold !important;
     font-style: normal !important;
 }
 
-.text-title{
+.text-title {
     color: var(--color-text-1) !important;
     font-size: 2em !important;
     font-weight: bold !important;
@@ -142,14 +168,14 @@ h1:hover{
     font-family: var(--font-logo);
 }
 
-.text-subtitle{
+.text-subtitle {
     color: var(--color-text-1) !important;
     font-size: 1.5em !important;
     font-weight: normal !important;
     font-style: normal !important;
 }
 
-.text-common{
+.text-common {
     color: var(--color-text-1) !important;
     font-size: 1em !important;
     font-weight: normal !important;
@@ -157,7 +183,7 @@ h1:hover{
     line-height: 1.5em !important;
 }
 
-.text-common-secondary{
+.text-common-secondary {
     color: var(--color-text-1) !important;
     font-size: 0.875em !important;
     font-weight: normal !important;
@@ -165,7 +191,7 @@ h1:hover{
     line-height: 1.375em !important;
 }
 
-.text-common-details{
+.text-common-details {
     color: var(--color-text-1) !important;
     font-size: 0.75em !important;
     font-weight: normal !important;
@@ -173,12 +199,15 @@ h1:hover{
     line-height: 1.25em !important;
 }
 
-.text-bold{
+.text-bold {
     font-family: var(--font-logo) !important;
 }
 
-/* ---------------------------------------------- Barra de navegación ---------------------------------------------- */
-/*ESTILOS DE LA BARRA DEL NAV*/
+
+/* -----------------------------------------------------
+   Barra de navegación
+----------------------------------------------------- */
+
 .navbar-cinelista {
     position: sticky;
     top: 0;
@@ -196,9 +225,10 @@ h1:hover{
     border-bottom: 0.1em solid var(--color-border-3);
 }
 
-/*ESTILOS PARA EL LOGO*/
-/*Estilos para el enlace del logo*/
-header{
+
+/* Logo */
+
+header {
     position: fixed;
 }
 
@@ -208,8 +238,8 @@ h1 a.nav-logo {
     color: inherit !important;
     text-decoration: none !important;
 }
-/*Estilos para el texto blanco del logo*/
-.nav-logo-1st-half{
+
+.nav-logo-1st-half {
     color: var(--color-text-1) !important;
     font-size: 1em !important;
     font-weight: bolder !important;
@@ -217,8 +247,8 @@ h1 a.nav-logo {
     font-family: var(--font-logo) !important;
     text-decoration: none !important;
 }
-/*Estilos para el texto rojo del logo*/
-.nav-logo-2nd-half{
+
+.nav-logo-2nd-half {
     color: var(--color-primary) !important;
     font-size: 1em !important;
     font-weight: bolder !important;
@@ -227,8 +257,10 @@ h1 a.nav-logo {
     text-decoration: none !important;
 }
 
-/*ESTILOS PARA BOTONES DEL NAV*/
-.nav-link.active{
+
+/* Botones del menú */
+
+.nav-link.active {
     background: var(--color-primary);
     color: var(--color-text-1) !important;
     text-decoration: none !important;
@@ -236,18 +268,19 @@ h1 a.nav-logo {
     border-radius: 3em;
 }
 
-.nav-link{
-    color: white !important;
+.nav-link {
+    color: var(--color-text-1) !important;
     font-family: var(--font-primary);
     text-decoration: none !important;
     border-radius: 3em;
-    transition: background-color 0.3s ease,
-    box-shadow 0.3s ease,
-    color 0.3s ease !important;
+    transition:
+            background-color 0.3s ease,
+            box-shadow 0.3s ease,
+            color 0.3s ease !important;
 }
 
-.nav-link:hover{
-    color: white !important;
+.nav-link:hover {
+    color: var(--color-text-1) !important;
     text-decoration: none !important;
     background-color: var(--color-container-2);
     box-shadow: 0 0 0.2em 0.2em var(--color-box-shadow-2);
@@ -257,7 +290,11 @@ h1 a.nav-logo {
     background-color: var(--color-primary);
 }
 
-/* ----------------------------------------------- Tabla de Mi lista ----------------------------------------------- */
+
+/* -----------------------------------------------------
+   Tabla de Mi lista
+----------------------------------------------------- */
+
 .tabla-cinelista {
     width: 100%;
     border-collapse: separate;
@@ -268,7 +305,9 @@ h1 a.nav-logo {
     overflow: hidden;
 }
 
-/*CABECERA*/
+
+/* Cabecera */
+
 .tabla-cinelista-header {
     background-color: var(--color-container-2);
 }
@@ -282,27 +321,36 @@ h1 a.nav-logo {
     border-bottom: 1px solid var(--color-border-2);
 }
 
-/*CELDAS Y ESPACIADO*/
+
+/* Celdas y espaciado */
+
 .tabla-cinelista td {
     padding: 0.9em 0.8em;
     vertical-align: middle;
     border-bottom: 1px solid var(--color-border-1);
 }
 
-/*Hover en cada película*/
+
+/* Hover en cada película */
+
 .tabla-cinelista-row {
     transition: background-color 0.2s ease;
 }
+
 .tabla-cinelista-row:hover {
     background-color: var(--color-container-2);
 }
 
-/*Quitar el borde de la última fila*/
+
+/* Quitar el borde de la última fila */
+
 .tabla-cinelista tbody tr:last-child td {
     border-bottom: none;
 }
 
-/*ESTADO DE PELICULAS*/
+
+/* Estado de películas */
+
 .estado {
     display: inline-block;
     padding: 0.5em 1em;
@@ -311,30 +359,37 @@ h1 a.nav-logo {
     font-weight: bold;
     white-space: nowrap;
 }
+
 .estado-visto {
     color: var(--color-green-button);
     background-color: var(--color-green-button-bg);
     border-color: var(--color-green-button-border);
 }
+
 .estado-no-visto {
     color: var(--color-yellow-button);
     background-color: var(--color-yellow-button-bg);
     border-color: var(--color-yellow-button-border);
 }
 
-/*VALORACIÓN*/
+
+/* Valoración */
+
 .tabla-cinelista td:nth-child(5) {
     text-align: center;
     white-space: nowrap;
     font-size: 1.25rem;
     letter-spacing: 0.1em;
 }
+
 .tabla-cinelista td:nth-child(5) i {
     margin: 0;
     padding: 0;
 }
 
-/*BOTÓN ELIMINAR*/
+
+/* Botón eliminar */
+
 .tabla-cinelista td form button {
     background: var(--color-red-button-bg);
     color: var(--color-red-button);
@@ -344,84 +399,107 @@ h1 a.nav-logo {
     white-space: nowrap;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
+
 .tabla-cinelista td form button:hover {
-    background-color: #921D1D !important;
+    background-color: var(--color-primary-hover) !important;
     border-color: var(--color-red-button-border);
     box-shadow: 0 0 0.3em 0.1em var(--color-red-button-border);
 }
 
-/*-------------------------------------------- Formulario Añadir Titulo --------------------------------------------*/
 
-/*Tarjeta principal*/
-form.bg-container{
+/* -----------------------------------------------------
+   Formulario Añadir Título
+----------------------------------------------------- */
+
+
+/* Tarjeta principal */
+
+form.bg-container {
     border: 1px solid var(--color-border-1) !important;
     border-radius: 2rem !important;
-    box-shadow: 0 0 30px rgba(184,37,37,.15);
+    box-shadow: 0 0 30px var(--color-shadow-red-soft);
 }
 
+
 /* Inputs y selects */
+
 form.bg-container input[type="text"],
 form.bg-container select {
     background-color: var(--color-background);
     color: var(--color-text-1);
     border: 1px solid var(--color-border-1);
     border-radius: 1rem;
-    padding: .9rem 1rem;
+    padding: 0.9rem 1rem;
 }
 
 
-/*Desplegables*/
+/* Desplegables */
+
 form.bg-container select {
     cursor: pointer;
     appearance: none;
     padding-right: 2.8rem;
 
-    /*Flecha hecha con CSS*/
-    background-image: linear-gradient(45deg, transparent 50%, white 50%),
-    linear-gradient(135deg, white 50%, transparent 50%);
-    background-position: calc(100% - 1rem) 50%,
-    calc(100% - .7rem) 50%;
-    background-size: .3rem .3rem, .3rem .3rem;
+    /* Flecha hecha con CSS */
+    background-image:
+            linear-gradient(45deg, transparent 50%, var(--color-text-1) 50%),
+            linear-gradient(135deg, var(--color-text-1) 50%, transparent 50%);
+    background-position:
+            calc(100% - 1rem) 50%,
+            calc(100% - 0.7rem) 50%;
+    background-size: 0.3rem 0.3rem, 0.3rem 0.3rem;
     background-repeat: no-repeat;
 }
 
-/*Flecha roja al enfocar*/
+
+/* Flecha roja al enfocar */
+
 form.bg-container select:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 .2rem var(--color-box-shadow-3);
+    box-shadow: 0 0 0 0.2rem var(--color-box-shadow-3);
 
-    background-image: linear-gradient(45deg, transparent 50%, var(--color-primary) 50%),
-    linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
+    background-image:
+            linear-gradient(45deg, transparent 50%, var(--color-primary) 50%),
+            linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
 }
 
-/*Opciones del desplegable*/
+
+/* Opciones del desplegable */
+
 form.bg-container select option {
     background-color: var(--color-container-1);
     color: var(--color-text-1);
 }
 
+
 @supports (appearance: base-select) {
+
     form.bg-container select,
     form.bg-container select::picker(select) {
         appearance: base-select;
     }
 
-    /*Ocultamos la flecha nativa: usamos la ya creada*/
+    /* Ocultamos la flecha nativa: usamos la ya creada */
+
     form.bg-container select::picker-icon {
         display: none;
     }
 
-    /*Mantener el estilo rojo mientras el desplegable está abierto*/
+    /* Mantener el estilo rojo mientras el desplegable está abierto */
+
     form.bg-container select:open {
         outline: none;
         border-color: var(--color-primary);
-        box-shadow: 0 0 0 .2rem var(--color-box-shadow-3);
-        background-image: linear-gradient(45deg, transparent 50%, var(--color-primary) 50%),
-        linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
+        box-shadow: 0 0 0 0.2rem var(--color-box-shadow-3);
+
+        background-image:
+                linear-gradient(45deg, transparent 50%, var(--color-primary) 50%),
+                linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
     }
 
-    /*La caja de la lista*/
+    /* La caja de la lista */
+
     form.bg-container select::picker(select) {
         background-color: var(--color-container-1);
         border: 1px solid var(--color-border-2);
@@ -431,22 +509,24 @@ form.bg-container select option {
         box-shadow: 0 0 20px var(--color-box-shadow-3);
         margin-top: 0;
 
-        /*Siempre debajo del select*/
+        /* Siempre debajo del select */
         position-area: bottom span-right;
         position-try-fallbacks: none;
         width: anchor-size(width);
         max-height: 40vh;
     }
 
-    /*Cada opción*/
+    /* Cada opción */
+
     form.bg-container select option {
         border-radius: 0;
-        padding: .4rem 1rem;        /* antes .8rem */
+        padding: 0.4rem 1rem;
         border-bottom: 1px solid var(--color-border-1);
-        transition: background-color .2s ease;
+        transition: background-color 0.2s ease;
     }
 
-    /*La última opción sin línea*/
+    /* La última opción sin línea */
+
     form.bg-container select option:last-child {
         border-bottom: none;
     }
@@ -459,7 +539,8 @@ form.bg-container select option {
         background-color: var(--color-primary);
     }
 
-    /*Ocultar el icono de check que añade el navegador*/
+    /* Ocultar el icono de check que añade el navegador */
+
     form.bg-container select option::checkmark {
         display: none;
     }
@@ -467,24 +548,31 @@ form.bg-container select option {
 
 
 /* Mantener el estilo de los campos de texto al enfocarlos */
+
 form.bg-container input[type="text"]:focus {
     outline: none;
     border-color: var(--color-primary);
 }
 
-/*Radios de estado*/
-.radio-custom{
+
+/* Radios de estado */
+
+.radio-custom {
     transform: scale(1.2);
-    margin-right: .5rem;
+    margin-right: 0.5rem;
     accent-color: var(--color-primary);
     cursor: pointer;
 }
 
-/*------------------------------ Valoracion Formulario ------------------------------*/
+
+/* -----------------------------------------------------
+   Valoración del formulario
+----------------------------------------------------- */
 
 
-/*Caja de estrellas*/
-#stars-container{
+/* Caja de estrellas */
+
+#stars-container {
     background: var(--color-background);
     border: 1px solid var(--color-border-1);
     border-radius: 1rem;
@@ -493,6 +581,7 @@ form.bg-container input[type="text"]:focus {
     justify-content: start !important;
     flex-wrap: wrap;
 }
+
 
 .star-btn {
     box-sizing: border-box;
@@ -512,64 +601,61 @@ form.bg-container input[type="text"]:focus {
             background-color 0.35s ease;
 }
 
-/*Estrellas seleccionadas*/
-.star-btn.hover-active {
-    opacity: 1;
-    border-color: var(--color-red-button-bg) !important;
-    background-color: var(--color-primary) !important;
-}
 
-/*Estado fijo tras hacer clic*/
+/* Estrellas seleccionadas */
+
+.star-btn.hover-active,
 .star-btn.active {
     opacity: 1 !important;
     border-color: var(--color-red-button-bg) !important;
     background-color: var(--color-primary) !important;
 }
 
-/*Estrellas hover*/
+
+/* Estrellas hover */
+
 .star-btn.hover-inactive {
     opacity: 0.4;
     background-color: var(--color-background-alt);
 }
 
-.star-btn{
-    opacity: 0.4;
-    border: 1px solid var(--color-primary);
-}
 
 #stars-container.disabled {
     pointer-events: none;
 }
 
-#stars-container.disabled button{
+#stars-container.disabled button {
     opacity: 0.4 !important;
     cursor: not-allowed;
 }
 
-/*Botón guardar*/
-form.bg-container button[type="submit"]{
+
+/* Botón guardar */
+
+form.bg-container button[type="submit"] {
     font-size: 1.1rem;
     box-shadow: 0 0 25px var(--color-box-shadow-3);
 }
 
-form.bg-container button[type="submit"]:hover{
+form.bg-container button[type="submit"]:hover {
     background-color: var(--color-primary) !important;
 }
 
-/*Separación entre campos*/
-form.bg-container label{
+
+/* Separación entre campos */
+
+form.bg-container label {
     margin-bottom: 0.75rem;
 }
 
 
-/* ---------------------------------------------- Estadísticas ---------------------------------------------- */
+/* -----------------------------------------------------
+   Estadísticas
+----------------------------------------------------- */
 
-#buscador{
-    margin-left: -3rem;
-    color: var(--color-text-2);
-}
 
-/*Contenedor de DataTables*/
+/* Contenedor de DataTables */
+
 #tabla-estadisticas_wrapper {
     width: 100%;
     color: var(--color-text-2);
@@ -578,12 +664,18 @@ form.bg-container label{
     padding-left: 100px;
 }
 
-/*Buscador*/
+/* Buscador */
+
+#buscador {
+    margin-left: -3rem;
+    color: var(--color-text-2);
+}
+
 #tabla-estadisticas_wrapper .dataTables_filter {
     float: none;
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0;
     color: var(--color-text-2);
     font-size: 1rem;
 }
@@ -612,7 +704,84 @@ form.bg-container label{
     box-shadow: 0 0 0 0.2rem var(--color-box-shadow-3);
 }
 
-/*Tabla*/
+
+/* Contenedor del buscador y botón de exportación */
+
+.estadisticas-controles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+
+.estadisticas-controles .dataTables_filter {
+    float: none;
+    margin-bottom: 0;
+}
+
+
+/* Botón de exportación */
+
+.estadisticas-exportar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.estadisticas-exportar .dt-buttons {
+    display: flex;
+}
+
+.estadisticas-exportar .btn-exportar-csv {
+    padding: 0.65rem 1rem !important;
+    color: var(--color-green-button) !important;
+    background-color: var(--color-green-button-bg) !important;
+    background-image: none !important;
+    filter: none !important;
+    border: 1px solid var(--color-green-button-border) !important;
+    border-radius: 2rem !important;
+    font-family: var(--font-primary) !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+    transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            color 0.2s ease !important;
+}
+
+
+/* Hover */
+
+.estadisticas-exportar .btn-exportar-csv:hover {
+    color: var(--color-text-1) !important;
+    background-color: var(--color-green-button-hover) !important;
+    border-color: var(--color-green-button-border) !important;
+    box-shadow: 0 0 0 0.15rem var(--color-shadow-green) !important;
+}
+
+
+/* Accesibilidad */
+
+.estadisticas-exportar .btn-exportar-csv:focus-visible {
+    outline: 2px solid var(--color-green-button) !important;
+    outline-offset: 3px;
+}
+
+
+/* Ajustes de botones DataTables */
+
+div.dt-buttons > .dt-button,
+div.dt-buttons > div.dt-button-split .dt-button {
+    margin-bottom: 0 !important;
+}
+
+
+/* -----------------------------------------------------
+   Tabla de estadísticas
+----------------------------------------------------- */
+
 #tabla-estadisticas {
     width: 100% !important;
     margin-top: 0;
@@ -623,7 +792,9 @@ form.bg-container label{
     background-color: var(--color-container-1);
 }
 
-/*Cabecera*/
+
+/* Cabecera */
+
 #tabla-estadisticas thead th {
     padding: 1.2rem 1rem;
     color: var(--color-text-1);
@@ -633,7 +804,9 @@ form.bg-container label{
     text-align: center !important;
 }
 
-/*Filas*/
+
+/* Filas */
+
 #tabla-estadisticas tbody tr {
     background-color: var(--color-container-1);
     transition: background-color 0.2s ease;
@@ -650,7 +823,16 @@ form.bg-container label{
     border-bottom: 1px solid var(--color-border-1);
 }
 
-/*Pie y total*/
+/* Flechas de ordenación DataTables */
+#tabla-estadisticas thead th.sorting,
+#tabla-estadisticas thead th.sorting::after,
+#tabla-estadisticas thead th.sorting_asc::before,
+#tabla-estadisticas thead th.sorting_desc::after {
+    margin-top: 0.25rem;
+}
+
+/* Pie y total */
+
 #tabla-estadisticas tfoot th {
     padding: 1.1rem 1rem;
     color: var(--color-text-1);
@@ -665,7 +847,22 @@ form.bg-container label{
     white-space: nowrap;
 }
 
-/*Botón Cargar más*/
+
+/* Total de registros */
+
+#total-registros {
+    color: var(--color-text-3) !important;
+    font-size: 0.8rem;
+    font-weight: normal;
+    text-align: right !important;
+    white-space: nowrap;
+}
+
+
+/* -----------------------------------------------------
+   Botón Cargar más
+----------------------------------------------------- */
+
 #cargar-mas {
     padding: 0.75rem 2.5rem;
     color: var(--color-text-1);
@@ -674,9 +871,10 @@ form.bg-container label{
     border-radius: 3rem;
     font-family: var(--font-primary);
     font-weight: 700;
-    transition: background-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+    transition:
+            background-color 0.2s ease,
+            box-shadow 0.2s ease,
+            transform 0.2s ease;
 }
 
 #cargar-mas:hover {
@@ -692,14 +890,21 @@ form.bg-container label{
     outline-offset: 3px;
 }
 
-/*Mensaje cuando la búsqueda no encuentra películas*/
+
+/* Mensaje cuando la búsqueda no encuentra películas */
+
 #tabla-estadisticas tbody td.dataTables_empty {
     padding: 2rem;
     color: var(--color-text-3);
 }
 
-/*Ajustes para pantallas pequeñas*/
+
+/* -----------------------------------------------------
+   Ajustes para pantallas pequeñas
+----------------------------------------------------- */
+
 @media (max-width: 576px) {
+
     #tabla-estadisticas_wrapper .dataTables_filter {
         justify-content: stretch;
     }
@@ -712,6 +917,15 @@ form.bg-container label{
         width: 100%;
         min-width: 0;
         margin-top: 0.5rem;
+    }
+
+    .estadisticas-controles {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .estadisticas-exportar {
+        justify-content: flex-end;
     }
 
     #tabla-estadisticas thead th,
