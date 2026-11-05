@@ -78,7 +78,7 @@
                         data: 'taquilla',
                         // Muestra la taquilla con formato español y euros
                         render: (data, type) => type === 'display'
-                            ? Number(data).toLocaleString('es-ES') + ' €'
+                            ? Number(data).toLocaleString('es-ES') + '€'
                             : data
                     },
                     {
@@ -92,13 +92,13 @@
                             return `
                                 <div class="progress">
                                     <div class="progress-bar text-white fw-bold
-                                                d-flex align-items-center justify-content-center"
+                                         d-flex align-items-center justify-content-center"
                                          role="progressbar"
                                          style="width: ${porcentaje}%;"
                                          aria-valuenow="${data}"
                                          aria-valuemin="0"
                                          aria-valuemax="5">
-                                        ${data} / 5
+                                        ${data}/5
                                     </div>
                                 </div>`;
                         }
@@ -183,7 +183,7 @@
                         .data()
                         .reduce((suma, valor) => suma + Number(valor || 0), 0);
 
-                    $('#total-taquilla').html(total.toLocaleString('es-ES') + ' €');
+                    $('#total-taquilla').html(total.toLocaleString('es-ES') + '€');
                 },
 
                 // Oculta el botón cuando ya se muestran todos los resultados
