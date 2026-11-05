@@ -653,15 +653,14 @@ form.bg-container label {
    Estadísticas
 ----------------------------------------------------- */
 
-
 /* Contenedor de DataTables */
 
 #tabla-estadisticas_wrapper {
     width: 100%;
-    color: var(--color-text-2);
-    font-family: var(--font-primary);
     padding-right: 100px;
     padding-left: 100px;
+    color: var(--color-text-2);
+    font-family: var(--font-primary);
 }
 
 /* Buscador */
@@ -673,13 +672,6 @@ form.bg-container label {
     margin-bottom: 0;
     color: var(--color-text-2);
     font-size: 1rem;
-}
-
-#tabla-estadisticas_wrapper .dataTables_filter label {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex-wrap: wrap;
 }
 
 #tabla-estadisticas_wrapper .dataTables_filter input {
@@ -700,6 +692,7 @@ form.bg-container label {
 }
 
 /* Botón de lupa / limpiar búsqueda */
+
 #boton-buscador {
     margin-left: -3rem;
     z-index: 5;
@@ -717,7 +710,7 @@ form.bg-container label {
     box-shadow: none;
 }
 
-/* Contenedor del buscador y botón de exportación */
+/* Controles: buscador y exportación */
 
 .estadisticas-controles {
     display: flex;
@@ -728,13 +721,7 @@ form.bg-container label {
     margin-bottom: 1.25rem;
 }
 
-.estadisticas-controles .dataTables_filter {
-    float: none;
-    margin-bottom: 0;
-}
-
-
-/* Botón de exportación */
+/* Botón de exportación CSV */
 
 .estadisticas-exportar {
     display: flex;
@@ -763,9 +750,6 @@ form.bg-container label {
             color 0.2s ease !important;
 }
 
-
-/* Hover */
-
 .estadisticas-exportar .btn-exportar-csv:hover {
     color: var(--color-text-1) !important;
     background-color: var(--color-green-button-hover) !important;
@@ -773,14 +757,10 @@ form.bg-container label {
     box-shadow: 0 0 0 0.15rem var(--color-shadow-green) !important;
 }
 
-
-/* Accesibilidad */
-
 .estadisticas-exportar .btn-exportar-csv:focus-visible {
     outline: 2px solid var(--color-green-button) !important;
     outline-offset: 3px;
 }
-
 
 /* Ajustes de botones DataTables */
 
@@ -804,7 +784,6 @@ div.dt-buttons > div.dt-button-split .dt-button {
     background-color: var(--color-container-1);
 }
 
-
 /* Cabecera */
 
 #tabla-estadisticas thead th {
@@ -816,8 +795,7 @@ div.dt-buttons > div.dt-button-split .dt-button {
     text-align: center !important;
 }
 
-
-/* Filas */
+/* Filas y celdas */
 
 #tabla-estadisticas tbody tr {
     background-color: var(--color-container-1);
@@ -836,6 +814,7 @@ div.dt-buttons > div.dt-button-split .dt-button {
 }
 
 /* Flechas de ordenación DataTables */
+
 #tabla-estadisticas thead th.sorting,
 #tabla-estadisticas thead th.sorting::after,
 #tabla-estadisticas thead th.sorting_asc::before,
@@ -859,19 +838,26 @@ div.dt-buttons > div.dt-button-split .dt-button {
     white-space: nowrap;
 }
 
-/* Barras de valoración de estadísticas */
+#total-registros {
+    color: var(--color-text-3) !important;
+    font-size: 0.8rem;
+    font-weight: normal;
+    text-align: right !important;
+    white-space: nowrap;
+}
+
+/* Barras de valoración */
+
 #tabla-estadisticas .progress {
     height: 24px;
     min-width: 100px;
+    margin: 0 2rem;
+    overflow: hidden;
     background-color: var(--color-container-3) !important;
     border: 1px solid var(--color-border-2) !important;
     border-radius: 2rem;
-    overflow: hidden;
-    margin-left: 2rem;
-    margin-right: 2rem;
 }
 
-/* Relleno de la barra */
 #tabla-estadisticas .progress-bar {
     background: var(--color-secondary) !important;
     border-radius: 2rem;
@@ -879,14 +865,11 @@ div.dt-buttons > div.dt-button-split .dt-button {
     font-size: 0.8rem;
 }
 
-/* Total de registros */
+/* Mensaje sin resultados */
 
-#total-registros {
-    color: var(--color-text-3) !important;
-    font-size: 0.8rem;
-    font-weight: normal;
-    text-align: right !important;
-    white-space: nowrap;
+#tabla-estadisticas tbody td.dataTables_empty {
+    padding: 2rem;
+    color: var(--color-text-3);
 }
 
 
@@ -922,14 +905,6 @@ div.dt-buttons > div.dt-button-split .dt-button {
 }
 
 
-/* Mensaje cuando la búsqueda no encuentra películas */
-
-#tabla-estadisticas tbody td.dataTables_empty {
-    padding: 2rem;
-    color: var(--color-text-3);
-}
-
-
 /* -----------------------------------------------------
    Ajustes para pantallas pequeñas
 ----------------------------------------------------- */
@@ -938,10 +913,6 @@ div.dt-buttons > div.dt-button-split .dt-button {
 
     #tabla-estadisticas_wrapper .dataTables_filter {
         justify-content: stretch;
-    }
-
-    #tabla-estadisticas_wrapper .dataTables_filter label {
-        width: 100%;
     }
 
     #tabla-estadisticas_wrapper .dataTables_filter input {
