@@ -666,11 +666,6 @@ form.bg-container label {
 
 /* Buscador */
 
-#buscador {
-    margin-left: -3rem;
-    color: var(--color-text-2);
-}
-
 #tabla-estadisticas_wrapper .dataTables_filter {
     float: none;
     display: flex;
@@ -704,6 +699,23 @@ form.bg-container label {
     box-shadow: 0 0 0 0.2rem var(--color-box-shadow-3);
 }
 
+/* Botón de lupa / limpiar búsqueda */
+#boton-buscador {
+    margin-left: -3rem;
+    z-index: 5;
+    color: var(--color-text-2);
+    cursor: text;
+    border-radius: 50%;
+}
+
+#boton-buscador.limpiar-activo:hover {
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+#boton-buscador:focus {
+    box-shadow: none;
+}
 
 /* Contenedor del buscador y botón de exportación */
 

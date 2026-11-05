@@ -7,7 +7,7 @@
         <th:block th:replace="~{fragments/cabecera :: datatables-buttons}"></th:block>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="stylesheet" href="../static/css/estilo.css">
+        <link rel="stylesheet" th:href="@{/css/estilo.css}">
     </head>
     <body class="container-fluid m-0 p-0 bg-background-cinelista">
 
@@ -125,25 +125,56 @@
                 // Configura el buscador con placeholder e icono de lupa
                 initComplete: function () {
                     const buscador = $('#tabla-estadisticas_filter input')
+                        .attr('type', 'text')
                         .attr('placeholder', 'Buscar película')
                         .off('.DT');
 
                     const filtro = $('#tabla-estadisticas_filter');
                     filtro.html(buscador);
+
                     buscador.wrap('<div class="input-group"></div>');
 
+                    // Botón que alterna entre lupa y X
                     buscador.after(`
-                    <span id="buscador" class="input-group-text bg-transparent border-0">
-                        <i class="bi bi-search"></i>
-                    </span>
-                `);
+                        <button type="button" id="boton-buscador"
+                                aria-label="Buscar"
+                                class="input-group-text bg-transparent border-0">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    `);
 
                     buscador.addClass('pe-5');
+
+                    const botonBuscador = $('#boton-buscador');
+
+                    // Actualiza el icono según el contenido del buscador
+                    function actualizarIcono() {
+                        if (buscador.val().length > 0) {
+                            botonBuscador.html('<i class="bi bi-x-lg"></i>');
+                            botonBuscador.attr('aria-label', 'Limpiar búsqueda');
+                            botonBuscador.addClass('limpiar-activo');
+                        } else {
+                            botonBuscador.html('<i class="bi bi-search"></i>');
+                            botonBuscador.attr('aria-label', 'Buscar');
+                            botonBuscador.removeClass('limpiar-activo');
+                        }
+                    }
 
                     // Busca sin distinguir entre tildes y mayúsculas
                     buscador.on('input', function () {
                         tabla.search(quitarTildes(this.value)).draw();
+                        actualizarIcono();
                     });
+
+                    // Limpia el buscador al pulsar la X
+                    botonBuscador.on('click', function () {
+                        if (buscador.val().length > 0) {
+                            buscador.val('').trigger('input').trigger('focus');
+                        }
+                        buscador.trigger('focus');
+                    });
+
+                    actualizarIcono();
                 },
 
                 // Suma la taquilla de las películas visibles en la tabla
