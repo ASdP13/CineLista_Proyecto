@@ -6,7 +6,7 @@ Asignatura: Desarrollo de interfaces
 # Contenido del Repositorio
 Todas las entregas a realizar sobre CineLista en Desarrollo de interfaces.
 
-Esta rama **[Main](https://github.com/ASdP13/CineLista_Proyecto/tree/main)** esta ___vacía___, las entregas de las practicas están realizadas en sus respectivas ramas.
+Esta rama **[Main](https://github.com/ASdP13/CineLista_Proyecto/tree/main)** esta ___vacía___ con el propósito de ser una rama introductoria sobre el repositorio.
 
 * Entregas:
   * **[Master](https://github.com/ASdP13/CineLista_Proyecto/tree/master)** - _Código completo Practica 2_
