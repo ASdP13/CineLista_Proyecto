@@ -1,4 +1,4 @@
-# CineLista Practica 3 - Desarrollo de interfaces
+# CineLista Practica 3
 Autores: Alexander Selivanov y Álex Segura
 
 Asignatura: Desarrollo de interfaces 
