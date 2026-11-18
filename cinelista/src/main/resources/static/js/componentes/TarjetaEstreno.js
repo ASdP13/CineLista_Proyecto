@@ -56,7 +56,11 @@ function TarjetaEstreno({
                 className="btn-interes"
                 onClick={() => setInteresado(!interesado)}
             >
-                {interesado ? "★" : "☆"} Marcar interes
+                {interesado ?
+                    (<><i className="bi bi-star-fill"></i> Desmarcar interés</>)
+                    :
+                    (<><i className="bi bi-star"></i> Marcar interés</>)
+                }
             </button>
         </li>
     );

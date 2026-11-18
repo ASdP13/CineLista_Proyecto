@@ -40,7 +40,7 @@ function ListaEstrenos() {
                     titulo={estreno.titulo}
                     fechaEstreno={estreno.fechaEstreno}
                     genero={estreno.genero}
-                    plataforma={estreno.plataforma}
+                    plataforma={estreno.plataforma=="" ? "Por confirmar" : estreno.plataforma}
                 />
             ))}
         </>
