@@ -15,31 +15,39 @@
  *     ...
  *   ]
  */
+
 function ListaEstrenos() {
-    // TODO 1: crea un estado "estrenos" (array vacio por defecto) con
-    //         React.useState([]). Necesitas tambien su funcion "setEstrenos".
 
+    // Estado que almacena los estrenos recibidos de la API
+    const [estrenos, setEstrenos] = React.useState([]);
 
-    // TODO 2: usa React.useEffect (con el array de dependencias vacio []
-    //         para que se ejecute UNA sola vez al montar el componente) y
-    //         dentro haz fetch("/api/estrenos"):
-    //           - convierte la respuesta con res.json()
-    //           - guarda los datos con setEstrenos(data)
-    //           - en el .catch() muestra el error con console.error(...)
+    // Se ejecuta una sola vez cuando se monta el componente
+    React.useEffect(() => {
 
+        fetch("/api/estrenos")
+            .then(res => res.json())
+            .then(data => setEstrenos(data))
+            .catch(error => console.error("Error al cargar los estrenos:", error));
 
-    // TODO 3: devuelve un <TarjetaEstreno> por cada elemento de "estrenos"
-    //         usando .map(). Recuerda:
-    //           - la prop "key" debe ser un valor unico (usa estreno.id)
-    //           - pasa las props titulo, fechaEstreno, genero y plataforma
-    //             tal y como las define TarjetaEstreno.js
-    //
-    // Mientras no lo completes, el componente no pinta nada:
-    return null;
+    }, []);
+
+    // Genera una tarjeta por cada estreno
+    return (
+        <>
+            {estrenos.map(estreno => (
+                <TarjetaEstreno
+                    key={estreno.id}
+                    titulo={estreno.titulo}
+                    fechaEstreno={estreno.fechaEstreno}
+                    genero={estreno.genero}
+                    plataforma={estreno.plataforma}
+                />
+            ))}
+        </>
+    );
 }
 
-// Monta la lista en el <ul id="lista-estrenos"> de estrenos.html.
-// (Este bloque ya viene resuelto, no hace falta tocarlo.)
+// Monta React en la lista de estrenos
 const contenedor = document.getElementById("lista-estrenos");
 const raiz = ReactDOM.createRoot(contenedor);
 raiz.render(<ListaEstrenos />);

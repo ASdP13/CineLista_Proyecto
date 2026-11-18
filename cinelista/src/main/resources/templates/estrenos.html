@@ -22,6 +22,19 @@
   La lista HTML donde debe montarse cada tarjeta ya tiene el id esperado:
 -->
 
+        <!-- React -->
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+        <!-- ReactDOM -->
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+        <!-- Babel Standalone -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <!-- Componentes de React -->
+        <script type="text/babel" th:src="@{/js/componentes/TarjetaEstreno.js}"></script>
+        <script type="text/babel" th:src="@{/js/estrenos.js}"></script>
+
         <main class="container-fluid p-5 row">
             <h2 class="text-center text-bold fw-bolder text-white mb-5 fs-1">ESTRENOS</h2>
             <ul id="lista-estrenos"></ul>
